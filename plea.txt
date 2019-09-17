@@ -1,0 +1,231 @@
+
+			  A Referee's Plea
+
+			    Mark Allman
+			  mallman@bbn.com
+
+			  Mon May 21, 2001
+
+
+I have just completed my first (maybe only!) stint on the program
+committee for ACM SIGCOMM's annual symposium.  While I have refereed
+many papers over the years I have never before read so many
+submissions in such a short span of time (I filed 20 reviews within
+about a month and read/skimmed many more papers).  This experience
+was eye-opening in that I now realize that the community generates a
+large amount of **junk**.  And, I don't mean "junk" in the sense of
+bad ideas.  In general, each paper I reviewed for SIGCOMM this year
+had at least a nugget of an interesting idea.  I mean "junk" in the
+"it took me twice as long to read this as it should have" sense.  In
+other words, the paper was sloppy.  I had a very difficult time
+trying to figure out what the paper was proposing or what the
+experiments were really showing.  The following is a short list of
+*easy* ways to improve your research papers.
+
+Most of the following comments are general and I presume would apply
+to any situation where one is attempting to publish scholarly work.
+However, the last comment is directed specifically at the
+internetworking research community.
+
+1.  Fire Up The Spell Checker, Please!
+
+    I cannot spell either.  I have, however, mastered ispell.  It
+    seems to me that everyone has access to a good spell checker
+    these days.  Not using the spell checker just indicates that
+    either you are sloppy or you do not care.  If you're sloppy with
+    your writing why should I believe you are not sloppy with your
+    experiments/analysis as well?  If you don't care about your
+    paper, why should I?
+
+2.  Sloppy Papers Are Long Shots.
+
+    Proofread your paper.  I see lots of mistakes that indicate the
+    paper was not looked over before it was submitted (e.g., "The
+    foo algorithm works better than the the bar algorithm.").
+    Again, if you do not take enough care in presenting your work,
+    why should I be compelled to recommend accepting it?  Sloppy
+    papers give the indication of sloppy research.
+
+    As well as reflecting poorly on your work, such papers are often
+    very difficult to read and understand.  Presumably, the point of
+    writing a paper is to convey new information to the world.
+    Therefore, there is major value in clear writing.  If a referee
+    can't get the point of the paper, or has a very difficult time
+    getting the main idea, there is a high likelihood that the paper
+    will be rejected.
+
+3.  I Read Submissions In My Lazy Boy.
+
+    I print out all papers I review.  I read them in my lazy boy.  I
+    scribble notes on them.  Do not assume that I am looking at
+    color plots!  Color is certainly nice and helps out immensely in
+    conference presentations.  But, color plots come out of my black
+    and white printer very badly in most cases.  Besides, most
+    conferences/journals publish black and white papers.  Make it
+    easy for my weary eyes to tell the difference between the lines
+    on your plots.  Do not plot on a grey background.  Make the font
+    on the plots readable without a magnifying glass.  Help me out!
+    Please!  
+
+    Often the plots are key to understanding the paper.  And, at the
+    risk of being redundant: If I cannot understand the paper I will
+    recommend rejecting it.
+
+4.  Don't Waste My Time I.
+
+    You do not need to give an in-depth tutorial of all background
+    material.  I cannot give you a good rule of thumb to help you
+    know how much background material to include.  It depends on the
+    conference to which you are submitting, the maturity of the
+    background work, etc.  But, I can tell you that there are some
+    topics (e.g., TCP congestion control) that are well understood
+    by people attending any networking conference.  You do not need
+    to describe the algorithms in painful detail.  A short paragraph
+    re-capping the main ideas and providing references to the
+    original works should suffice.
+
+5.  Don't Waste My Time II.
+
+    You do not need to provide me with an example of every kind of
+    plotting strategy you use.  When you first show a plot with
+    notation that I might not understand, explain the notation.
+    But, using half a page to show me a plot that adds nothing to my
+    understanding of the topic is a less than compelling use of real
+    estate.
+
+6.  Don't Waste My Time III.
+    
+    Roughly stick to the page limit and the requested format.  Don't
+    make me try to guess how long your paper really is because you
+    1.75-spaced the paper rather than double-spacing it as requested
+    in the call for papers.
+
+    (Note to program committee chairs and journal editors: This
+     reviewer's opinion is that if a submission is not obviously in
+     the ball-park of the page limit it should be immediately
+     returned to the authors until such time that it is in the
+     ball-park.) 
+
+7.  Answer All The Easy Questions.  
+
+    If you need a constant for the foo algorithm and you define
+    c=17, I want to know why you chose 17.  Also, some items in
+    papers jump out at reviewers as odd.  For instance, I was
+    recently reviewing a paper that simulated a network with a
+    bottleneck bandwidth of "about T1 rate".  The actual rate of the
+    link turned out to be something like 1.3 Mbps.  This begs the
+    obvious question of why the authors used 1.3 Mbps rather than
+    using T1 rate (~1.5 Mbps).  Even if the explanation you end up
+    with is rough, it is better than no explanation at all in the
+    vast majority of the cases.
+
+8.  Make My Life Easy.
+
+    It is not a super-big deal, but it is always nice to get a paper
+    that is easy to read.  This includes things like using a very
+    clear font that is of readable size and numbering the pages.
+
+9.  A Little Restraint, Please.
+
+    Your paper does not solve the entire world's networking
+    problems.  Really.  Many papers rub reviewers the wrong way by
+    making bold claims about solving all sorts of problems without
+    any sort of evidence (or only weak evidence).  It is much better
+    to show some restraint and perspective when discussing your
+    results.  It is alright to solve small problems, or to only show
+    preliminary results that *may indicate* a solution.  Just don't
+    over claim what you have shown.
+
+10. Use Units.  
+
+    "The length of our data transfers is 1" means nothing.  1 what?
+    1 packet?  1 KB?  1 minute?  Sometimes it is obvious from the
+    context -- sometimes it isn't.  If you use units you don't have
+    to worry about it.
+
+11. We're All Not Mathematicians
+
+    Theorems are quite a necessary part of many papers.  However, it
+    is not necessary to give *only* a theorem with no summary or
+    context.  Summaries aid me as a reviewer to gain an intuitive
+    understanding before trying to dig into the math to make sure
+    what you have it correct -- thus making my task easier and less
+    error prone, I believe.  As a reader of a paper, I often just
+    want the high-order bit without slogging into the theorems and
+    proofs to get said bit.
+
+12. On References.
+
+    One common mistake that authors make is failing to include
+    relevant references.  It is better to err on the side of citing
+    too much related work.  
+
+    Next, when previous work must be criticized, do so in a
+    constructive manner.  In other words, do not say something like
+    "Zevon's [1] work is easily shown to be less effective than the
+    work presented in this paper" -- Mr. Zevon might be reviewing
+    your paper!  Something more along the lines of: "Zevon [1] first
+    introduced the foo algorithm for decreasing the size of routing
+    tables.  We show a more robust algorithm, bar, that goes a step
+    further and reduces the size of routing tables by 50% when
+    compared to the foo algorithm."
+
+    Finally, do not overstate what a paper you are citing says.  It
+    is often better to stick with the author's conclusions and not
+    come up with your own.  For instance, many times I see simple
+    simulation studies cited as "proving" the algorithm in question
+    is safe and works well for the entire Internet.  If one goes
+    back to the original paper the conclusion is not nearly as bold,
+    often claiming that the simple simulations are an indication
+    that the algorithm is workable and that future work on testing
+    the algorithm in the Internet is needed.  Overstating previous
+    work may make your argument stronger if you are not caught.
+    But, when I notice such references they cast your paper in a
+    not-so-wonderful light in my eyes.
+
+13. Read These Papers.
+
+    I have noticed that a number of other reviewers are including
+    pointers to these two papers in their reviews.
+
+     Mark Allman, Aaron Falk. On the Effective Evaluation of TCP. ACM
+     Computer Communication Review, 29(5), October 1999. 
+     http://www.icir.org/mallman/papers/tcp-evaluation.pdf
+
+     Sally Floyd and Vern Paxson.  Difficulties in Simulating the
+     Internet.  To appear in IEEE/ACM Transactions on Networking. 
+     http://www.icir.org/vern/papers/sim-difficulty.TON.2001.pdf
+
+    These papers do not necessarily provide hard-and-fast rules for
+    how to conduct research.  However, they do provide some
+    collected wisdom that should at least be considered in your
+    research efforts.
+    
+    In addition, the following note provides specific guidance on
+    getting a paper accepted for presentation at SIGCOMM:
+
+     Craig Partridge. How to Increase the Chances Your Paper is
+     Accepted at ACM SIGCOMM. ACM Computer Communication Review,
+     28(3), July 1998.
+     http://www.acm.org/sigcomm/ccr/archive/1998/jul98/ccr-9807-partridge.html
+
+I don't want to make it sound like I think you need to write
+*perfect* papers when submitting to a conference or journal.  A
+mis-spelling here or there, an extra word, an extra page, etc. are
+all OK.  They will not be cause for your paper to be rejected.  But,
+it is surprising how often authors make many of the mistakes listed
+above in a single submission.  The bottom line is that if it is
+difficult for me to make it through your paper (because the writing
+is poor or I can't read the plots or whatever) there is a higher
+chance that I will err on the side of recommending that the paper be
+rejected.  Furthermore, the above items are *easy* things to fix
+when compared with the *hard* task of conducting your investigation.
+As I said in the opening, I believe most of the papers I review have
+a decent idea -- yet I recommend rejecting the vast majority of the
+papers I review.  I believe many papers would have a much better
+chance at being accepted if the authors simply take a little more
+time in preparing their manuscript.
+
+Several of the items on this list were suggested during discussions
+with Vern Paxson.  Additional items for the list are always
+welcome. 

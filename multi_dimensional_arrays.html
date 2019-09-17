@@ -1,0 +1,319 @@
+
+<!-- saved from url=(0073)http://www.cse.unt.edu/~donr/n-dimensionalArrays/n-DimensionalArrays.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>MANIPULATING n-DIMENSIONAL ARRAYS IN C/C++</title>
+</head>
+<body style="padding:10; width:700;">
+<div align="center">
+<h2>MANIPULATING n-DIMENSIONAL ARRAYS IN C</h2>
+
+<p>Don Retzlaff, Principal Lecturer,<br>
+Department of Computer Sciences,<br>
+University of North Texas, Denton, Texas</p>
+
+<p>http://www.cse.unt.edu/~donr &nbsp; donr@unt.edu &nbsp; donretzlaff@gmail.com</p>
+
+<p>Keywords: multi-dimensional/n-dimensional arrays, C, C++, dynamically allocated arrays</p>
+
+<p>Text copyright © 1996, 2011 Donald Alan Retzlaff<br>
+Code can be reproduced with proper credit given to the author</p>
+</div>
+
+<h3>Overview</h3>
+
+<p>Most applications utilize one dimensional arrays.  A few manage
+two-dimensional matrices.  Fewer still manipulate three-dimensional
+arrays.  And on a very rare occasion, an average C programmer comes
+across the need for a four dimensional array (truthfully, I've been
+doing this programming thing for over twenty years and I've yet to have
+a practical need for one — I'm still waiting).  Well, waiting I am, and
+I'm ready for them.  Not only am I ready for four-dimensional arrays,
+but five-, six-, and beyond, courtesy of the following routine.
+And they'll even be run-time dynamically-allocated multi-dimensional
+arrays.</p>
+
+<h3>Discussion</h3>
+
+<p>Most languages treat arrays as static data structures; that is, their
+size and dimensions are fixed at compile time.  C and C++ provide a
+simple mechanism and notation to create dynamic arrays — ones that
+can not only be sized at run-time, but resized as well.  Manipulating
+dynamic multi-dimensional arrays, however, even in C, requires additional
+work and expertise on the part of the programmer.  The programmer must
+calculate the correct element offset from the beginning of the array in
+order to reference the data properly.</p>
+
+<p>The formula for determining the index offset for a two-dimensional array
+is well defined and known by many programmers.  The formula:</p>
+
+<p><code style="padding:30; font-style:italic;">row * number_of_columns + col</code>
+
+</p><p>can easily be included in an algorithm to calculate the element offset
+for a two-dimensional array, including one that is dynamically allocated
+at run-time.</p>
+
+<p>When you start to get into three-dimensional arrays and beyond, however,
+the proper manipulation of indices and their offsets from the beginning
+address of an array gets a little foggy for most programmers (including me).</p>
+
+<p>The purpose of the following function is to allow the programmer a means
+of referencing a multi-dimensional array using indices (rows, columns, etc),
+without necessarily having to define the actual size of the array at
+compile time.</p>
+
+<p>Note that even though C only passes the address of an array to a function,
+all dimensions of the array parameter (except for the number of rows) still
+have to be defined at compile time in order to refer to the array inside
+the function using index notation.  For example (note the 5 for the number
+of columns):</p>
+
+<p><code style="padding:30;">void test_function (int arrayIn[][5], int numRows);</code></p>
+
+<p>The following function provides a means of still referencing an array
+parameter using index-like notation even though the size (and even the
+number of dimensions!) isn't known until the function is invoked.</p>
+
+<p>The function <code>offset()</code> is designed to calculate the proper
+offset location
+of a specified index location, based on information passed to it about
+the array; specifically, the number of dimensions, the number of elements
+in each dimension, and the index location of the actual element needed.
+It is written in a general way so it can handle any sized multi-dimensional
+array, dynamically or statically allocated.  To simplify its use even
+further, a wrapper for the function can be provided to hide some of the
+gory details of the non-varying parameters for a specific array.</p>
+
+
+<h3>Using the function <code>offset()</code></h3>
+
+<p>The function <code>offset()</code> employs the variable parameter passing
+techniques supported by C and its &lt;stdarg.h&gt; library of macros and
+functions.</p>
+
+<p>The first parameter is a pointer to an array of integers.  The first
+value in this array (index[0]) indicates the number of dimensions that are
+in the array to be processed.  The other elements in the array indicate the
+number of elements in each of the dimensions indicated in the 0th element.
+For example, to indicate a four dimensional array that has 2 rows,
+3 columns, 4 levels, and 5 files, the array could be defined as follows:</p>
+
+<p><code style="padding-left:30;">int arrayInfo[] = { 4, &nbsp;2,3,4,5 };</code></p>
+
+<p>The subsequent parameters to <code>offset()</code> consist of the indices
+of the actual element needed.  For example, to reference element
+<code>[1][2][1][3]</code> in the array, the second through fifth parameters
+passed to <code>offset()</code> would be 1, 2, 1, and 3, respectively.
+A complete call to the function for this element position would be:</p>
+
+<p><code style="padding-left:30;">offset (arrayInfo,1,2,1,3)</code></p>
+
+<p>The function returns a long integer that indicates the typeless distance
+from a 0 initial address.  It is the programmer's responsibility to add
+this value to the address of the array.  This process can be simplified
+by using a wrapper around <code>offset()</code>.</p>
+
+<p>Several additional examples are shown below in the <code>main()</code>
+function that demonstrate the use of <code>offset()</code>.</p>
+
+
+<h3><code>offset()</code> function Wrappers</h3>
+
+<p>Referencing the <code>offset()</code> function directly is still a little
+cumbersome and not very intuitive in certain code situations.  A better interface
+would be one that provides a simulated indexing notation, like a normal
+reference to a multi-dimensional array.  A simple wrapper, through the
+use of a <code>#define</code> statement, can be used to hide the details of using
+<code>offset()</code> and performing the address calculation to access the actual
+element in the array.  A separate wrapper would need to be defined for
+each array that is to use <code>offset()</code>.
+
+</p><p>Samples of these wrappers for two-, three-, four-, and five-dimensional
+arrays, as well as a dynamic three-dimensional array, are shown in the
+example program below.</p>
+
+
+<h3>Error Checking</h3>
+
+<p>Minimum error checking is included in the <code>offset()</code> function
+in its present form.  It is the programmer's responsibility to define the
+informational array for the first parameter, as well as pass the proper number
+of parameters based on the information supplied in the information array.</p>
+
+<p>Through a simple <code>assert()</code> call, <code>offset()</code> will
+verify that the parameter indices are legally within the array bounds (upper
+bounds only... I assume C programmers know they can't have negative indices).</p>
+
+<!--
+Platforms
+=========
+The code below has been tested in the following environments with the
+indicated compilers with the exact same result each time.
+
+    MSDOS: Turbo C 2.0, Borland C++ 3.1
+    UNIX:  cc, gcc and g++ for Linux (on Callie)
+           cc, gcc and g++ for UNIX (on Jove)
+           cc, gcc and g++ for UNIX (on Ponder)
+-->
+
+<h3>Acknowledgements</h3>
+
+<p>I wish to thank Denis Conrady and Sean Wheeler for their initial
+discussions with me concerning the concepts of what I was trying to
+accomplish with this function.  I also would like to thank my wife Lisa
+for deriving the actual formula that I ultimately translated into code.</p>
+
+<h3>Source Code</h3>
+
+<xmp style="border:black solid 1px; padding:7; background-color:aliceblue;">
+// n-Dimension Array Example
+//   copyright (c) 1996,2011 Donald Alan Retzlaff
+//      donr@unt.edu   donretzlaff@gmail.com
+//
+// Code can be reproduced with proper credit given to the author
+
+#include <stdio.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <assert.h>
+
+// OFFSET: determine element offset for an n-dimensional array
+long offset (int *dimInfo, ...) {
+  long result; // where the resultant offset will be stored
+  int *indices, // dynamic array where actual element indices are stored
+      i; // loop counter
+
+  va_list ap; // Variable-parameter data structure used by stdarg
+
+  // Allocate space for indices based on value from arrayInfo
+  indices = (int *) malloc (dimInfo[0] * sizeof(short));
+
+  // Using stdarg, read the variable number of index parameters and store
+  //   them in the indices array
+  va_start (ap,dimInfo);
+  for (i=0; i < dimInfo[0]; i++)  {
+    indices[i] = va_arg(ap,int);
+    // Verify that the indices indicated are all legal for this array
+    assert (indices[i] < dimInfo[i+1]);
+    }
+  va_end (ap);
+
+  // Perform the general offset calculation for an n-dimensional array
+  result = (indices[0] * dimInfo[2] + indices[1]);
+  for (i=2; i < dimInfo[0]; i++)
+    result = result * dimInfo[i+1] + indices[i];
+
+  free (indices); // Get rid of dynamic array
+  return result;
+} // offset
+
+
+// Wrappers to place around the offset() function to simplify access to
+//   the arrays via indices
+#define subA2(r,c)         *(&A2[0][0] + offset(A2i,r,c))
+#define subA3(r,c,l)       *(&A3[0][0][0] + offset(A3i,r,c,l))
+#define subA4(r,c,l,m)     *(&A4[0][0][0][0] + offset(A4i,r,c,l,m))
+#define subA5(r,c,l,m,n)   *(&A5[0][0][0][0][0] + offset(A5i,r,c,l,m,n))
+#define subDynArray(r,c,l) *(dynArray + offset(dynArrayInfo,r,c,l))
+
+
+int main(void) { // TESTING PROGRAM
+  // Sample arrays used to demonstrate use of the offset() function
+                           // below are the informational arrays used by
+                           // offset() to indicate the size of the arrays
+    int A2[2][3];                  int A2i[] = { 2, 2,3 };
+    int A3[2][3][4];               int A3i[] = { 3, 2,3,4 };
+  float A4[2][3][4][5];            int A4i[] = { 4, 2,3,4,5 };
+   char A5[2][3][4][5][6];         int A5i[] = { 5, 2,3,4,5,6 };
+
+  float *dynArray; // example of creating a dynamic multi-dimensional array
+  int *dynArrayInfo; // we don't know the size needed for this yet (since
+                       //   the size array hasn't been defined, so it will have
+                       //   to be dynamically allocated later also
+  int rows,cols,levels, // used to interactively define size of array
+      row,col,level;
+  float value;
+
+  int i,j,k,l; // general loop counters
+
+  // A specific value is assigned to an element in A2 using the offset()
+  //   function wrapper; then the value is displayed using normal index
+  //   notation and using the offset() method
+  subA2(1,2) = 5;
+  printf ("%d %d\n",A2[1][2],subA2(1,2));
+
+
+/*
+  // This block can demonstrate that elements in a 3-dimensional array in C
+  //   are stored breadth-first (level, then column, then row).  It prints
+  //   quite a lot, that's why it's commented out for now.
+  for (i=0; i < 2*3*4; i++)
+    *(&A3[0][0][0]+i) = i;
+  for (i=0; i < 2; i++)
+    for (j=0; j < 3; j++)
+      for (k=0; k < 4; k++)
+        printf ("A3[%d][%d][%d]=%d\n",i,j,k,A3[i][j][k]);
+
+  puts ("\n\n");
+  return 0;
+*/
+
+/*
+  // And this block of code demonstrates that elements in a 4-dimensional array
+  //   in C are stored still breadth-first (file, then level, then column, then
+  //   row).  It also prints quite a lot, that's why it's commented out for now.
+  for (i=0; i < 2*3*4*5; i++)
+    *(&A4[0][0][0][0]+i) = i;
+  for (i=0; i < 2; i++)
+    for (j=0; j < 3; j++)
+      for (k=0; k < 4; k++)
+        for (l=0; l < 5; l++)
+          printf ("A4[%d][%d][%d][%d]=%d\n",i,j,k,l,A4[i][j][k][l]);
+*/
+
+  puts ("\nExamples showing elements assigned using the offset() function");
+  subA3(1,1,1) = 99;
+  printf ("A3[1][1][1]=%d\n",A3[1][1][1]);
+
+  subA4(0,1,2,2) = 27.1234F;
+  printf ("A4[0][1][2][2]= %5.5f  %5.5f\n",A4[0][1][2][2],subA4(0,1,2,2));
+
+  subA5(1,2,3,4,2) = 'X';
+  printf ("A5[1][2][3][4][2]='%c'\n",A5[1][2][3][4][2]);
+
+  puts ("\nExample of dynamically defining a multi-dimensional array");
+
+  // Now set up, on the fly, a 3-dimensional array for "dynArray"
+  printf ("Enter number of rows: ");  scanf ("%d",&rows);
+  printf ("Enter number of cols: ");  scanf ("%d",&cols);
+  printf ("Enter number of levels: ");  scanf ("%d",&levels);
+
+  // Allocate the space needed for the informational array, then load the
+  //   elements with the user-specified information
+  dynArray = (float *) malloc (rows * cols * levels * sizeof(float));
+
+  dynArrayInfo = (int *) malloc ((1+3) * sizeof(int));
+  dynArrayInfo[0] = 3; // number of dimensions in array
+  dynArrayInfo[1] = rows;
+  dynArrayInfo[2] = cols;
+  dynArrayInfo[3] = levels;
+
+  // Interactively ask user for various indices and values, showing that
+  //   appropriate value is returned, and that assertion can be tested;
+  //   terminate loop when -1,-1,-1 is entered as the index
+  while (true) {
+    printf ("Specify row: ");    scanf ("%d",&row);
+    printf ("Specify column: "); scanf ("%d",&col);
+    printf ("Specify level: ");  scanf ("%d",&level);
+    if (row == -1 && col == -1 && level == -1) break;
+
+    printf ("Specify new value: ");  scanf ("%f",&value);
+    subDynArray(row,col,level) = value;
+    printf ("The value found in the array was %4.4f\n",
+                                            subDynArray(row,col,level));
+  };
+
+  return 0;
+}
+</xmp>
+
+
+</body></html>

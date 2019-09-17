@@ -1,0 +1,852 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Gernot's List of Systems Benchmarking Crimes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel = STYLESHEET href="style.css" Type="text/css">
+</head>
+
+<body bgcolor="#ffffff">
+<center>
+<h1>Systems Benchmarking Crimes<br>
+    <font size=-1>Gernot Heiser</font></h1>
+</center>
+
+<h3>Contents</h3>
+<ul type="SQUARE">
+  <li><a href="#crimes">Benchmarking Crimes</a>
+  <ol type="A">
+    <li><a href="#select">Selective benchmarking</a>
+      <ol type="1">
+        <li><a href="#conserv">Not evaluating potential performance degradation</a></li>
+        <li><a href="#subset">Subsetting</a></li>
+        <li><a href="#bias">Selective data set</a></li>
+      </ol>
+    </li>
+    <li><a href="#handle">Improper handling of benchmark results</a>
+      <ol type="1">
+	<li><a href="#ubm">Microbenchmarks</a></li>
+	<li><a href="#xput">Throughput only</a></li>
+	<li><a href="#perc">Downplaying overheads</a></li>
+	<li><a href="#sign">No significance</a></li>
+	<li><a href="#mean">Arithmetic mean</a></li>
+      </ol>
+    </li>
+    <li><a href="#gigo">Using the wrong benchmarks</a>
+      <ol type="1">
+	<li><a href="#sim">Benchmarking simulated system</a></li>
+	<li><a href="#up">Inappropriate/misleading benchmarks</a></li>
+	<li><a href="#calib">Calibration = evaluation set</a></li>
+      </ol>
+    </li>
+    <li><a href="#compare">Improper comparison of benchmark results</a>
+      <ol type="1">
+	<li><a href="#base">Improper baseline</a></li>
+	<li><a href="#self">Evaluate against self</a></li>
+	<li><a href="#fair">Unfairly evaluating competitors</a></li>
+      </ol>
+    </li>
+    <li><a href="#missing">Missing information</a>
+      <ol type="1">
+	<li><a href="#platf">Missing platform specification</a></li>
+	<li><a href="#subbm">Missing sub-benchmark results</a></li>
+	<li><a href="#rel">Relative numbers only</a></li>
+      </ol>
+    </li>
+  </ol>
+  <li><a href="#ex">Exercise for the reader</a></li>
+  <li><a href="#best">Best practice</a></li>
+  <li><a href="#more">Further information</a></li>
+</ul>
+
+<hr>
+
+<h3><a name="crimes"></a>Benchmarking Crimes</h3>
+
+<p>
+  When reviewing systems papers (and sometimes even when reading published
+  papers) I frequently come across highly misleading use of
+  benchmarks. I'm not saying that the authors intend to mislead the
+  reader, it's just as likely incompetence. But that isn't an
+  excuse.
+</p>
+
+<p>
+  I call such cases <em>benchmarking crimes</em>. Not because you can
+  go to jail for them (but probably should?) but because they 
+  undermine the integrity of the scientific process. Rest assured, if
+  I'm a reviewer of your paper, and you commit one of those, you're
+  already most of the way into rejection territory. The rest of the
+  work must be pretty damn good to be forgiven a benchmarking crime (and
+  even then you'll be asked to fix it up in the final version).
+</p>
+
+<p>
+  The following list is work in progress, I'll keep adding to it as I
+  come across (or remember) more systems benchmarking crimes...
+</p>
+
+<ol type="A">
+  <li><b><a name="select"></a>Selective benchmarking</b>
+
+    <p>
+      This is the mother of all benchmarking crimes: using a biased
+      set of benchmarks to (seemingly) prove a point, which might be
+      contradicted by a broader coverage of the evaluation space. It's a
+      clear indication of at best gross incompetence or at worst an
+      active attempt to deceive.
+    </p>
+
+    <p>
+      There are several variants of this crime, I list the most
+      prominent ones. Obviously, not all instances of this are equally
+      bad, in some cases it may just be a matter of degree of
+      thoroughness, but in its most blatant form, this is a truly
+      hideous crime.
+    </p>
+
+    <ol type="1">
+      <li><b><a name="conserv"></a>Not evaluating potential performance degradation</b>
+	<p>
+	  A fair evaluation of a technique/design/implementation that is supposed to improve performance must actually demonstrate two things:
+	</p>
+	<ul>
+	  <li><b>Progressive criterion:</b> Performance actually does improve significantly in the area of interest</li>
+	  <li><b>Conservative criterion:</b> Performance does not significantly degrade elsewhere</li>
+	</ul>
+
+	<p>Both are important! You cannot easily argue that you've
+	  gained something if you improve performance at one end and
+	  degrade it at another.
+	</p>
+
+	<p>
+	  Reality is that techniques that improve performance
+	  generally require some degree of extra work: extra
+	  bookkeeping, caching, etc. These things always have a cost,
+	  and it is dishonest to pretend otherwise. This is really at
+	  the heart of systems: it's all about picking the right
+	  trade-offs. A new technique will therefore almost always
+	  introduce some overheads, and you need to demonstrate that
+	  they are acceptable.
+	</p>
+
+	<p>
+	  If you innovation does lead to a degree of degradation, then
+	  you need to analyse it, and build a case that it is
+	  acceptable given the other benefits. If, however, you only
+	  evaluate the scenarios where your approach is beneficial,
+	  you are being deceptive. No ifs, no buts.
+	</p>
+      </li>
+
+      <li><b><a name="subset"></a>Benchmark sub-setting without strong justification</b>
+	<p>
+	  I see this variant (which can actually be an instance of the
+	  previous one) frequently with SPEC benchmarks. These suites
+	  have been designed as suites for a reason: to be
+	  representative of a wide range of workloads, and to stress
+	  various aspects of a system.
+	</p>
+
+	<p>
+	  However, it is also true that it is often not possible to run all
+	  of SPEC on an experimental system. Some SPEC programs require
+	  large memories (they are designed to stress the memory subsystem!)
+	  and it may be simply impossible to run them on a particular
+	  platform, particularly an embedded system. Others are FORTRAN
+	  programs, and a compiler may not be available.
+	</p>
+
+	<p>
+	  Under such circumstances, it is unavoidable to pick a subset of the
+	  suite. However, it must then be clearly understood that the
+	  results are of limited value. <em>In particular, it is totally
+	    unacceptable to quote an overall figure of merit (such as average
+	    speedup) for SPEC if a subset is used!</em>
+	</p>
+
+	<p>
+	  If a subset is used, it <em>must be well justified.</em> There must
+	  be convincing explanation for each missing program. And the
+	  discussion must be careful not to read too much into the results,
+	  keeping in mind that it is conceivable that any trend observed by
+	  the subset used could be reverted by programs not in the subset.
+	</p>
+
+	<p>
+	  Where the above rules are violated, the reader is bound to suspect
+	  that the authors are trying to hide something. I am particularly
+	  allergic to formulations like &ldquo;we picked a representative
+	  subset&rdquo; or &ldquo;typical results are shown&rdquo;. There is
+	  no such thing as a &ldquo;representative&rdquo; subset of SPEC,
+	  and the &rdquo;typical&rdquo; results are most likely
+	  cherry-picked to look most favourable. Expect no mercy for such a
+	  crime!
+	</p>
+
+	<p>
+	  Lmbench is a bit of a special case. Its license actually forbids
+	  reporting partial results, but a complete lmbench run produces so
+	  many results that it is impossible to report in a conference
+	  paper. On the other hand, as this is a collection of
+	  micro-benchmarks which are probing various aspects of the OS, one
+	  generally understands what each measures, and may only be
+	  interested in a subset for good reasons. In that case, running the
+	  particular lmbench test has the advantage of measuring a
+	  particular system aspect in a well-defined, standardised way. This
+	  is probably OK, as long as not too much is being read into the
+	  results (and Larry McVoy doesn't sue you for license
+	  violation...)</p>
+
+	<p>A variant of this crime is <b>arbitrarily picking benchmarks
+	    from a huge set</b>. For example, when describing an approach to
+	  debug or optimise Linux drivers, there are obviously thousands
+	  of candidates. It may be infeasible to use them all, and you have
+	  to pick a subset. However, I want to understand <em>why</em> you
+	  picked the particular subset. Note that <em>arbitrary</em> is not the same
+	  as <em>random</em>, so a random pick would be fine. However, if
+	  your selection contains many obscure or outdated devices, or is
+	  heavily biased towards serial and LED drivers, then I suspect that
+	  you have something to hide. </p>
+      </li>
+
+      <li><b><a name="bias"></a>Selective data set hiding deficiencies</b>
+	<img align="right" alt="Selective data set crime"
+	     title="Potentially selective data set" width="270" hspace="15"
+	     src="crime-0.png">
+	<p>This variant can again be viewed as an example of the first.
+	  Here the range of the input parameter is picked to make the
+	  system look good, but the range is not representative of a real
+	  workload. For example, the diagram on the right shows pretty good
+	  scalability of throughput as a function of load, and without any
+	  further details this looks like a nice result.</p>
+
+	<p>Things look a bit different when we put the graph into
+	  context. Say this is showing the throughput (number of
+	  transactions per second) of a database system with a varying number
+	  of clients. So far so good.</p>
+
+	<p>Is it still so good if I'm telling you that this was measured
+	  on a 32-core machine? What we see then is that the throughput
+	  scales almost linearly <em>as long as there is at most one client
+	    per core</em>. Now that is not exactly a typical load for a
+	  database. A single transaction is normally insufficient for
+	  keeping a core busy. In order to get the best of your hardware,
+	  you'll want to run the database so that there are in average
+	  multiple clients per core.</p>
+
+	<img align="left" alt="Selective data set crime"
+	     title="Relevant data range" width="270"
+	     src="crime-1.png">
+	<p>So, <em>the interesting data range starts where the graph
+	    ends!</em> What happens if we increase the load into the really
+	  interesting range is shown in the graph on the left. Clearly,
+	  things no longer look so rosy, in fact, scalability is
+	  appalling!</p>
+
+	<p>Note that, while somewhat abstracted and simplified, this is
+	  not a made-up example, it is taken from a real system, and the
+	  first diagram is equivalent to what was in a real publication. And
+	  the second diagram is essentially what was measured independently
+	  on the same system. Based on a true story, as they say...</p>
+      </li>
+    </ol>
+  </li>
+
+  <li class="Clear"><b><a name="handle"></a>Improper handling of benchmark results</b>
+    <ol type="1">
+      <li><b><a name="ubm"></a>Pretending micro-benchmarks represent overall
+        performance</b>
+
+        <p>Micro-benchmarks specifically probe a particular aspect of a
+          system. Even if they are very comprehensive, they will not be
+          representative of overall system performance. Macro-benchmarks
+	  (representing real-world workloads) must be used to provide a
+	  realistic picture of overall performance.</p>
+
+        <p>In rare cases, there is a particular operation which is
+	  generally accepted to be critical, and where <em>significant</em>
+	  improvements are reasonably taken as an indication of real
+	  progress. An example is microkernel IPC, which was long known to
+	  be a bottleneck, and reducing cost by an order of magnitude can
+	  therefore be an important result. And for a new microkernel,
+	  showing that it matches the best published IPC performance can
+	  indicate that it is competitive.</p>
+
+        <p>Such exceptions are rare, and in most cases it is unacceptable
+	  to make arguments on system performance based only on
+	  micro-benchmarks.</p>
+      </li>
+
+      <li><b><a name="xput"></a>Throughput degraded by <em>x</em>% &rArr; overhead
+	is <em>x</em>%</b>
+	<p>
+	This vicious crime is committed by probably 10% of papers I get
+	to review. If the throughput of a system is degraded by a
+	certain percentage, it does not at all follow that the same
+	percentage represents the overhead that was added. Quite to the
+	contrary, in many cases the overhead is much higher. Why?
+	</p>
+
+	<p>
+	Assume you have a network stack which under certain
+	circumstances achieves a certain throughput, and a modified
+	network stack achieves 10% less throughput. What's the overhead
+	introduced by the modification?
+	</p>
+
+	<p>
+	Without further information, it is impossible to answer that
+	question. Why is throughput degraded? In order to answer that
+	question, we need to understand what determines throughput in
+	the first place. Assuming that there's more than enough incoming
+	data to process, the amount of data the stack can handle depends
+	mostly on two factors: processing (CPU) cost and latency.
+	</p>
+
+	<p>
+	Changes to the implementation (not protocols!) will affect
+	processing cost as well as latency, but their effect on
+	throughput is quite different. As long as CPU cycles are
+	available, processing cost should have negligible effect on
+	throughput, while latency may (packets will be dropped if not
+	processed quickly enough). On the other hand, if the CPU is
+	fully loaded, increasing processing cost will directly translate
+	into latency.
+	</p>
+
+	<p>
+	Networks are actually designed to tolerate a fair amount of
+	latency, so they shouldn't really be very sensitive to it. So,
+	what's going on when throughput drops?
+	</p>
+
+	<p>
+	The answer is that either latency has grown substantially to
+	show up in reduced throughput (likely much more than the
+	observed degradation in throughput), or the CPU has maxed
+	out. And if a doubling of latency results in a 10% drop of
+	throughput, calling that &ldquo;10% overhead&rdquo; is probably
+	not quite honest, is it?</p>
+
+        <p>
+        If throughput was originally limited by CPU power (fully-loaded
+        processor) then a 10% throughput degradation can be reasonably
+        interpreted as 10% increased CPU cost, and that can be fairly
+        called &ldquo;10% overhead&rdquo;. However, what if on the
+        original system the CPU was 60% loaded, and on the modified
+        system it's maxed out at 100% (and that leading to the
+        performance degradation)? Is that still &ldquo;10%
+        overhead&rdquo;?
+        </p>
+
+        <p>
+        Clearly not. A fair way to calculate overhead in this case would
+        be to look at the <em>processing cost per bit</em>, which
+        is proportional to CPU load divided by throughput. And on that
+        measure, cost has gone up by 85%. Consequently, I would call
+        that an <em>85% overhead!</em>
+        </p>
+
+        <p>
+        A variant of this is to off-load some processing on a
+        &ldquo;free&rdquo; core, and not including the load on that
+        extra core in the processing cost. That's just cheating.
+        </p>
+
+        <p>
+        The bottom line is that incomplete information is presented
+        which prevented us from really assessing the overhead/cost, and
+        lead to a huge under-estimation. <em>Throughput comparisons must
+        always be accompanied by a comparison of complete CPU load. For
+        I/O throughput, the proper way to compare is in terms of
+        processing time per bit!</em>
+        </p>
+      </li>
+
+      <li><b><a name="perc"></a>Downplaying overheads</b>
+        <p>
+        There are several ways people use to try to make their overheads look smaller than they are.</p>
+
+        <ol type="i">
+	  <li><b><a name="perc"></a>6% &rarr; 13% overhead is a 7% increase</b>
+
+	    <p>This one is confusing percentage with percentage points,
+	    regularly practiced (out of incompetence)
+	    by <a href="http://imgs.xkcd.com/comics/percentage_points.png">the
+	    media</a>. That doesn't excuse doing the same in technical
+	    publications.</p>
+
+	    <p>So 
+	    the authors' modified system increases processing overheads from
+	    6% (for the original system) to 13% (for theirs) and they sheepishly
+	    claim they only added 7% overhead. Of course, that's complete
+	    bullocks! They more than doubled the overhead, their system is
+	    less than half as good as the original!
+	    </p>
+
+	    <p>Similarly, if your baseline system has a CPU utilisation of
+	    26%, and your changes result in a utilisation of 46%, you haven't
+	    increased load by 20%, you almost doubled it! The dishonesty in
+	    the 20% claim becomes obvious if you consider what would happen if
+	    the same experiments were run on a machine exactly half as
+	    powerful: load would go from 52% to 92%, clearly <em>not</em> a
+	    20% increase!</p>
+	  </li>
+
+	  <li><b>Other creative overhead accounting</b>
+
+	    <p>A particularly brazen example of creative accounting of
+	     overheads is in <a
+	       href="https://www.usenix.org/conference/atc14/technical-sessions/presentation/fu">this
+	    paper</a> (published in Usenix ATC, a reputable
+	    conference). In Table 3, the latency of the <tt>stat</tt>
+	    system call goes up from 0.39&mu;s to 2.28&mu;s, almost a
+	    six-fold increase. Yet the authors call it an &ldquo;82.89%
+	    slowdown&rdquo;! (Also note the <a
+	    href="http://gernot-heiser.org/style-guide.html#pseudoacc">pseudo
+	    accuracy</a>; this is not a crime, but an indication of inability
+	    to understand numbers.)
+	    </p>
+	  </li>
+	</ol>
+      </li>
+
+      <li><a name="sign"></a><b>No indication of significance of data</b>
+        <p>
+        Raw averages, without any indication of variance, can be highly
+        misleading, as there is no indication of the significance of
+        the results. Any difference between results from different
+        systems might be just random.
+        </p>
+
+        <p>
+        In order to indicate significance, it is <em>essential</em> that
+        at least standard deviations are quoted. Systems often behave in
+        a highly deterministic fashion, in which case the standard
+        deviation of repeated measurements may be very small. In such a
+        case it might be sufficient to state that, for example,
+        &ldquo;all standard deviations were below 1%&rdquo;. In such a
+        case, if the effect we are looking at is, say, 10%, the reader
+        can be reasonably comfortable with the significance of the
+        results.
+        </p>
+
+        <p>If in doubt use Student's t-test to check the significance.</p>
+
+        <p>
+        Also, if you fit a line to data, quote at least a regression
+        oefficient (unless it's obvious that there are lots of points
+        nd the line passes right through all of them).
+        </p>
+      </li>
+
+      <li><b><a name="mean"></a>Arithmetic mean for averaging across benchmark scores</b>
+        <p>
+        The arithmetic mean is generally not suitable for deriving an
+        overall score from a set of different benchmarks (except where
+        the absolute execution times of the various benchmarks have real
+        significance). In particular the arithmetic mean has no meaning
+        if individual benchmark scores are normalised (eg against a
+        baseline system).
+        </p>
+
+        <p>
+        The proper way to average (i.e.&nbsp;arrive at a single figure
+        of merit) is to use the <em>geometric mean</em> of scores
+        [<a href="http://dl.acm.org/citation.cfm?id=5673">Fleming &amp;
+Wallace, CACM (29), p&nbsp;218</a>].
+        </p>
+      </li>
+    </ol>
+  </li>
+
+    <li><b><a name="gigo"></a>Using the wrong benchmarks</b>
+      <ol type="1">
+	<li><b><a name="sim"></a>Benchmarking of simplified simulated system</b>
+	<p>
+	It is sometimes unavoidable to base an evaluation on a
+	simulated system. However, this is extremely dangerous, as a
+	simulation is always a model, and contains a set of
+	assumptions.
+	</p>
+
+	<p>
+	It is therefore essential to ensure that the simulation model
+	does not make any simplifying assumption which will impact the
+	performance aspect you are looking for. And, it is equally
+	important to make it clear to the reader/reviewer that you
+	really have made sure that the model is truly representative
+	with respect to your benchmarks.
+	</p>
+
+	<p>
+	It is difficult to give general advice on how to do this. My
+	best advice is to put yourself into the shoes of the reader, and
+	even better to get an outsider to read your paper and check
+	whether you have really made a convincing case.
+	</p>
+	</li>
+
+	<li><b><a name="up"></a>Inappropriate and misleading benchmarks</b>
+	<p>
+	I see people using benchmarks that are supposed to prove the point, when in fact they say almost nothing (and the only thing they could possibly show is truly aweful performance). Examples: 
+	</p>
+	<ul>
+	  <li>Using uniprocessor benchmarks for multiprocessor scalability
+	  <p>
+	  This one seems outright childish, but that doesn't mean you
+	  don't see it in papers submitted by (supposedly) adults. Someone
+	  is trying to demonstrate the multiprocessor scalability of their
+	  system by running many copies of SPEC CPU benchmarks.
+	  </p>
+
+	  <p>
+	  Of course, these are uniprocessor programs which do not
+	  communicate. Further more, they perform very few system
+	  calls, and thus do not exercise the OS or underlying
+	  communication infrastructure.  <em>They should scale
+	    perfectly</em> (at least for low processor counts). If not,
+	  there's serious brokenness in the OS or hardware. Real
+	  scalability tests would run workloads which actually
+	  communicate across processors and use system calls.
+	  </p>
+	  </li>
+	  <li>Using a CPU-intensive benchmark to show networking overheads
+
+	  <p>
+	  Again, this seems idiotic (or rather, <em>is</em> idiotic)
+	  but I've seen it nevertheless. People trying to
+	  demonstrate that their changes to a NIC driver or
+	  networking stack has low performance impact, by measuring
+	  the performance degradation of a CPU-intensive
+	  benchmark. Again, the only thing this
+	  can <em>possibly</em> prove is that performance sux,
+	  namely if there is <em>any</em> degradation at all!
+	  </p>
+	  </li>
+	</ul>
+      </li>
+
+      <li><b><a name="calib"></a>Same dataset for calibration and validation</b>
+      <p>
+      This is a fairly widespread crime, and it's frankly an
+      embarrassment for our discipline.
+      </p>
+
+      <p>
+      Systems work frequently uses models which have to be calibrated
+      to operating conditions (eg.&nbsp;platform, workloads,
+      etc). This is done with some <em>calibration workloads</em>. Then the
+      system is evaluated, running an <em>evaluation workload</em>, to
+      show how accurate the model is.
+      </p>
+
+      <p>It should go without saying, but apparently doesn't,
+      that <em>the calibration and evaluation workloads must be
+      different!</em> In fact, they must be totally disjoint. It's
+      incredible how many authors blatantly violate this simple
+      rule.</p>
+
+      <p>Of course, the results of using the same data for calibration
+      and validation are likely that the model <em>appears</em>
+      accurate, after all, it's been <em>designed</em> to fit the
+      experimental results. But all such an experiment can show is how
+      well the model fits the existing data. It <em>implies nothing</em>
+      about the <em>predictive power</em> of the model, yet prediction
+      of future measurements is what models are all about!
+      </p>
+      </li>
+    </ol>
+  </li>
+
+  <li><b><a name="compare"></a>Improper comparison of benchmark results</b>
+    <ol type="1">
+      <li><b><a name="base"></a>No proper baseline</b>
+      <p>
+      This crime is related to the above.  A typical case is comparing
+      different virtualization approaches by only showing the
+      performance of the two virtualized systems, without showing the
+      real baseline case, which obviously is the native system. It's
+      comparison against native which determines what's good or bad,
+      not comparison against an arbitrary virtualization solution!
+      </p>
+
+      <p>
+      Consider the baseline carefully. Often it is the
+      state-of-the-art solution. Often it is the optimal (or
+      theoreticaly best) solution or a hardware limit (assuming
+      zero software overhead). The optimal solution is usually
+      impossible to implement in a system, because it requires
+      knowledge of the future or magic zero-cost software, but it can
+      often be computed &ldquo;outside&rdquo; the system and is an
+      excellent base for comparison. In other cases the correct
+      baseline it is in some sense an unperturbed system (as in the
+      virtualization example above).
+      </p>
+      </li>
+
+      <li><b><a name="self"></a>Only evaluate against yourself</b>
+      <p>
+      This is a variant of the above crime, but that doesn't make it
+      rare. It might be exciting to you that you have improved the
+      performance of your system over last year's paper, but I find it
+      much less exciting. I want to see the significance, and that
+      means comparing against some accepted standard.
+      </p>
+
+      <p>
+      At least this crime is less harmful that others in that it is
+      pretty obvious, and rarely will a reviewer fall for it.
+      </p>
+
+      <p>
+      There's a variant of this crime which is more subtle: <em>evaluating
+      a model against itself</em>. Someone builds a model of a system,
+      making a number of simplifying assumptions, not all of them
+      obviously valid. They build a solution for that problem, and
+      then evaluate that solution on a simulated system that contains
+      the exact same assumptions. The results look nice, of course,
+      but they are also totally worthless, as there they are lacking
+      the most basic reality check. This one I find a lot in papers
+      which are already published. Depressing...
+      </p>
+      </li>
+
+      <li><b><a name="fair"></a>Unfair benchmarking of competitors</b>
+      <p>
+      Doing benchmarks on your competitors yourself is tricky, and you
+      must go out of your way to ensure that you do not treat them
+      unfairly. I'm sure you tweaked <em>your</em> system as well as you could,
+      but did you really go through the same effort with the
+      alternative?
+      </p>
+
+      <p>
+      In order to reassure the reader/reviewer that you have been
+      fair, describe clearly what you have done with the competitor
+      system, e.g.&nbsp;fully describe all configuration parameters,
+      etc. Be particularly circumspect if your results do not match
+      any published data about the competitor system. If in doubt,
+      contact the authors of that system to confirm that your
+      measurements are fair.
+      </p>
+
+      <p>
+      Again, I have seen a case of this case of benchmarking abuse in
+      a published paper, in that case the &ldquo;competitor&rdquo;
+      system was mine. The authors of the paper failed to present any
+      data on how they ran my system, and I strongly suspect that they
+      got it wrong. For example, the default configuration of our
+      open-source release had debugging enabled. Turning off that
+      option (which, of course, you would in any production setting
+      and any serious performance evaluation) improves performance
+      massively.
+      </p>
+
+      <p>
+      The bottom line is that extreme care must be taken when doing
+      your own benchmarking of a competitor system. It is easy to run
+      someone else's system sub-optimally, and <em>using sub-optimal
+      results as a basis for comparison is highly unethical and
+      probably constitutes scientific misconduct. And sloppiness is no
+      excuse in such a case!</em>
+      </p>
+      </li>
+    </ol>
+  </li>
+
+  <li><b><a name="missing"></a>Missing information</b>
+    <ol type="1">
+
+      <li><b><a name="platf"></a>Missing specification of evaluation platform</b>
+      <p>
+      For reproducibility it is essential that the evaluation platform
+      is well-specified, including all characteristics that may
+      influence the results. Platform incorporates hardware and software.
+      </p>
+
+      <p>
+      Details depend a fair bit on what is being evaluated, but at the
+      very least I expect to see the processor architecture, number of
+      cores and clock rate, and memory
+      sizes. For benchmarks involving networking the throughput
+      supported by the NIC and switches if any. For benchmarks that
+      exercise the memory system it is generally important to specify
+      sizes and associativities of all levels of cache. In generaal it
+      is good practice the list the model number of the CPU, core type
+      and microarchitecture. 
+      </p>
+
+      <p>
+      The same holds for the software. Specify the operating system
+      and (where used) hypervisor are you
+      running on, including release number. Compiler versions are
+      often also relevant, as may be the version of other tools. 
+      </p>
+      </li>
+
+      <li><b><a name="subbm"></a>Missing sub-benchmark results</b>
+      <p>
+      When running a benchmarking suite (such as SPEC) it is generally
+      not sufficient to just quote the overall figure of merit of that
+      suite. Instead, it is essential to show performance of the
+      individual sub-benchmarks. Suites are designed to cover a range
+      of load conditions, and some may benefit from your work while
+      others are degraded. Only providing the overall score can at
+      worst hide problems, and at best reduces the insights that can
+      be obtained from the evaluation.
+      </p>
+      </li>
+
+      <li><b><a name="rel"></a>Relative numbers only</b>
+      <p>
+      Always give complete result, not just ratios (unless the
+      denominator is a standard figure). At best, seeing only relative
+      numbers leaves me with a doubt as to whether the figures make
+      sense at all, I'm robbed of a simple way to perform a sanity
+      check. At worst, it can cover up that a result is really bad, or
+      really irrelevant.
+      </p>
+
+      <p>
+      One of the worst instances I've seen of this crime was not in a
+      paper I was reviewing, but one that was actually published. It
+      compared the performance of two systems by showing the <em>ratio
+      of overheads</em>: a ratio of two relative differences. This is
+      too much relativity to read anything out of the numbers.
+      </p>
+    
+      <p>
+      For example, assume that the overhead of one system is twice
+      that of another. By itself, that tells us very little. Maybe we
+      are comparing a tenfold with a twentyfold overhead. If so, who
+      cares? Both are most likely unusable. Or maybe the overhead of
+      one system is 0.1%, who cares if the other one has 0.2%
+      overhead? The bottom line is we have no idea how significant the
+      result is, yet the representation implies that it is highly
+      significant.
+      </p>
+      </li>
+
+    </ol>
+  </li>
+
+  <!--
+  <li><b></b>
+    <p>
+    </p>
+  </li>
+  -->
+</ol>
+
+
+<hr>
+
+<h3><a name="ex"></a>Exercise for the Reader</h3>
+
+Count the number of benchmarking crimes
+in <a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4784874&amp;tag=1">this
+paper</a> (published in IEEE CCNC'09).
+
+<hr>
+
+<h3><a name="best"></a>Benchmarking Best Practice</h3>
+
+<p>The below benchmarking rules is what I tell my students. It's somewhat OS-oriented, but the basic principles apply generally.</p>
+
+<h4>General rules</h4>
+
+<ul>
+  <li>Make sure that the system is really quiescent when starting an experiment, leave enough time to ensure all previous data is flushed out.</li>
+  <li>Make your benchmarking rig part of our regression testing suite.</li>
+  <li>Document what you're doing.</li>
+</ul>
+
+<h4>Test data and results</h4>
+
+<ul>
+  <li><em>Always</em> verify the data you are transferring. When writing something to disk or network, read it back and compare to what you've written. When reading, check that what you're reading is correct.</li>
+  <li>There are cases where this would unreasonably lengthen the time a benchmark takes. If that's the case, then at make sure that you least check the data for one complete run, before continuing. Also, prior to collecting final numbers, check again!</li>
+  <li>Never use the same data over and over. Make sure that each run uses different data. For example, have a timestamp or other unique identifier (like the coordinate and label in the graph) in the data. This is to ensure that you're actually reading the correct data, not some stale cache contents, wrong block, etc.</li>
+  <li>Use a combination of successive and separate runs for the same data point. E.g., do the same point at least twice in a row (helps to identify caching effects that shouldn't be there) and twice more after some other points were taken (to identify cases of caching where there shouldn't be any). Have a good look at the standard deviations.</li>
+  <li>Invert the order of measurements. This helps to identify interference between measurements. This and the previous point can together be achieved by traversing the set of data points in both directions.</li>
+  <li>Don't only use regular strides or powers of two. You may be hitting pathological cases without noticing it. Throwing in some random points might be a good idea. However, don't use only random points, you might be missing pathological cases. Good candidates for pathological cases are 2<sup>n</sup>, 2<sup>n</sup>-1, 2<sup>n</sup>+1.</li>
+  <li>When comparing measurements of different configurations (which is what you normally do) make sure you use exactly the same points, don't just compare graphs over the same interval.</li>
+  <li>When getting funny results, check that you are comparing apples with apples. For example, make sure that the system is in as much as possible the same state between runs you want to compare. For example, we had cases where benchmark results on Linux were affected by where the OS allocated them in physical memory, which differed between successive runs (and had massive effects on conflict misses in physically-addressed caches).</li>
+</ul>
+
+<h4>Statistics</h4>
+
+<ul>
+  <li><em>Always</em> do several runs, and check the standard deviation. Watch out for abnormal variance. In the sort of measurements we do, standard deviations are normally expected to be less than 0.1%. If you see >1% this should ring alarm bells.</li>
+  <li>In some cases it is reasonable to ignore the highest or lowest point (but this really should only be done after a proper statistical outlayer-detection procedure) or only look at the floor of the points. However, <em>only use such selective use of data if you <b>really</b> know what you are doing, and also state it explicitly in your paper/report.</em></li>
+</ul>
+
+<h4>Timing</h4>
+
+<ul>
+  <li>Use <em>lots</em> of iterations in order to improve statistics and remove clock granularity.</li>
+  <li>Run sufficient warm-up iterations which aren't timed.</li>
+  <li>Isolate the thing you want to time into a function (already done if you're timing system calls).</li>
+  <li>Eliminate loop overhead (don't just rely on it being small, <em>eliminate</em> it). The most reliable way of doing this is two run two versions of the benchmark, identical except for replacing the actual invocation (function or system call) by a noop. Run the loop without any compiler optimisations (which is why it's important to have the thing you want to time in a function, which however may require you to separately deal with function overhead).</li>
+  <li>Perform static analysis of the syscall loop above and verify that the timing numbers match your predictions.</li>
+  <li>Use proper statistics, even if they are not used in the final paper, checking for variance is an important sanity check.</li>
+</ul>
+
+<HR>
+
+<h3><a name="more"></a>Further Information</h3>
+
+<p>With colleagues at VU Amsterdam I recently published a (non
+peer-reviewed) <a href="https://arxiv.org/abs/1801.02381">study of
+benchmarking crimes in the system security literature</a>, with
+interesting results. It contains a further category that is not
+relevant to most systems work, but definitely to security work.</p>
+
+<p>
+  In my <a href="http://www.cse.unsw.edu.au/~cs9242/">Advanced
+  Operating Systems</a> course I have
+  a <a href="http://www.cse.unsw.edu.au/~cs9242/current/lectures/">lecture</a>
+  on performance evaluation, which discusses many of these
+  benchmarking crimes, and gives other useful hints on benchmarking
+  and performance analysis.
+</p>
+
+<p>
+  If you are a student or early-career researcher, you might also be
+  interested in my <a href="style-guide.html">style guide for papers
+  and theses</a>.
+</p>
+
+<HR>
+<CENTER>
+<H3>
+<A HREF="http://gernot-heiser.org/">Gernot's Home</A> ...
+<A HREF="http://ertos.nicta.com.au">Research Group Home</A> ...
+<a href="http://www.ertos.nicta.com.au/education/projects.pml">Student
+Projects</a>
+</H3>
+</CENTER>
+
+<HR>
+<table>
+<tr valign="bottom">
+<td>
+Gernot Heiser, <A
+HREF="mailto:gernot@unsw.edu.au">gernot@unsw.edu.au</A>.<br>
+Created 2010-01-05, last modified
+ 
+              2018-10-05,
+last validated 2018-10-05.</td>
+<td><a href="http://validator.w3.org/check/referer"><img border="0"
+        src="http://www.w3.org/Icons/valid-html401-blue"
+        alt="Valid HTML 4.01!" height="31" width="88"></a>
+</td>
+</tr>
+</table>
+</BODY>
+</HTML>
+

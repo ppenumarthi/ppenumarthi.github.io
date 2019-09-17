@@ -1,0 +1,481 @@
+
+<HML>
+<HEAD>
+<TITLE>CS 740</TITLE>
+<style type = "text/css">
+<!--
+   a:link {color:#006666; text-decoration: none; }
+   a:visited { color:#006666; text-decoration: none; }
+   a:hover { background-color: yellow; }
+   h1 {color: red}
+   h2 {color: blue}
+   body {color:black; } 
+.mtitle
+{
+font-size:12pt;
+font-weight:700;
+font-family:sans-serif;
+}
+.otitle
+{
+font-size:12pt;
+color:black;
+font-weight:700;
+font-family:sans-serif;
+}
+.gen
+{
+font-size:9pt;
+color:black;
+font-family:sans-serif;
+}
+.gen1
+{
+font-size:9pt;
+color:white;
+font-family:sans-serif;
+}
+.paper
+{
+font-size:9pt;
+color:#000000;
+font-weight:700;
+font-family:sans-serif;
+}
+.resources A
+{
+font-size:9pt;
+font-style:normal;
+font-family:sans-serif;
+}
+-->
+</style>
+</HEAD>
+
+<TABLE BORDER=0 width=100%>
+
+<TR valign="middle">
+<TD align="center">
+<SPAN CLASS="mtitle">Advanced Computer Networks<br>Reading List</SPAN> </TD> </TR>
+</TABLE>
+
+<hr size=0>
+
+<TABLE align=center>
+<tbody>
+<TR>
+<TD align="left">
+<SPAN class="gen">[ <a href="index.html">Home </a>| <a href =
+    "papers.html"> Reading List </a> | <a
+    href="lectures.html"> Schedule </a>| <a href=http://www.piazza.com/wisc/spring2018/cs740>Piazza</a>  ]</SPAN> </TD> </TR> </TABLE>
+
+<SPAN class="gen">
+<a name="overview"></a><SPAN CLASS="otitle">Network
+Architecture</SPAN><p>
+
+<UL type=disc>
+
+<LI><B>[<a href = "740-Papers/Cla88.pdf">Philosophy</a>]</B> D.
+Clark, <I> Design Philosophy of the DARPA Internet Protocols</I>, In
+Proc. of ACM SIGCOMM'88.
+
+  <LI><B>[<a href = "740-Papers/SRC84.pdf">E2E</a>]</B> J. Saltzer,
+D. Reed, and D.  Clark, <I>End-to-end Arguments in System Design, ACM
+Transactions on Computer Systems</I>, Vol. 2, No. 4, pp. 195-206,
+1984.
+
+      <LI><B>[<a href =
+      "http://www0.cs.ucl.ac.uk/staff/M.Handley/papers/only-just-works.pdf">WhyJust</a>]</B>
+      M. Handley, <I>Why the Internet only just works</I>.
+
+
+</ul>
+
+<hr size=0>
+
+<a name="overview"></a><SPAN CLASS="otitle">End-host: Congestion Control</SPAN><p>
+
+<UL type=disc>
+
+  <LI><B>[skim for background: <a href =
+  "740-Papers/JK88.pdf">CC</a>]</B> V. Jacobson and
+  M. Karels, <I>Congestion Avoidance and Control</I>, ACM SIGCOMM
+  1988.
+
+    			      <LI><B>[Skim: <a href = "http://yuba.stanford.edu/techreports/TR05-HPNG-112102.pdf">FCT</a>]</B> Nandita Dukkipati, Nick McKeown, <i>Why Flow-Completion Time is the Right metric for
+Congestion Control and why this means we need
+new algorithms,</I> Stanford Tech Report.
+
+
+      <LI><B>[<a href = "https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/46403.pdff">QUIC</a>]</B> Langley et al, <i>The QUIC Transport Protocol:
+Design and Internet-Scale Deployment,</I> ACM
+  SIGCOMM 2017.
+
+  <!--     <LI><B>[<a href = "http://conferences.sigcomm.org/sigcomm/2002/papers/xcp.pdf">KHR02</a>]</B> D. Katabi, M. Handley and C. Rohr, <i>Congestion Control for High Bandwidth-Delay Product Networks,</I> ACM -->
+  <!-- SIGCOMM 2002. -->
+
+      <LI><B>[<a href
+="http://simula.stanford.edu/~alizade/Site/DCTCP_files/dctcp-final.pdf">DCTCP</a>]</B>
+M. Alizadeh, A. Greenberg, D. Maltz, J. Padhye, P. Patel,
+B. Prabhakar, S. Sengupta, M. Sridharan, <I> Data Center TCP
+(DCTCP)</I>, ACM SIGCOMM 2010.
+
+	      <LI><B>[<a href = "https://www.usenix.org/legacy/event/nsdi11/tech/full_papers/Wischik.pdf">MPTCP</a>]</B> Damon Wischik, Costin Raiciu, Adam Greenhalgh, Mark Handley, <i>Design, implementation and evaluation of congestion control
+for multipath TCP,</I> NSDI 2011.
+
+
+<!--   <LI class=MsoNormal style="mso-margin-top-alt: auto; -->
+<!--   mso-margin-bottom-alt: auto; mso-list: l10 level1 lfo3; tab-stops: -->
+<!--   list .5in"><B><a href = "740-Papers/BOP94.pdf"><SPAN -->
+<!--   style="FONT-SIZE: 11pt; COLOR: black">[BOP94]</SPAN></a></B><SPAN -->
+<!--   style="FONT-SIZE: 11pt"> L. <SPAN class=SpellE>Brakmo</SPAN>, -->
+<!--   S. O'Malley and L. Peterson, <I style="mso-bidi-font-style: -->
+<!--   normal">TCP-Vegas: new techniques for congestion detection and -->
+<!--   avoidance</I>, In Proc. of ACM SIGCOMM '94.<o:p></o:p></SPAN> -->
+
+
+ <!--  <LI class=MsoNormal style="mso-margin-top-alt: auto; -->
+<!--   mso-margin-bottom-alt: auto; mso-list: l10 level1 lfo3; tab-stops: -->
+<!--   list .5in"><B><a href = "740-Papers/FJ93.pdf"><SPAN -->
+<!--   style="FONT-SIZE: 11pt; COLOR: black">[FJ93]</SPAN></a></B><SPAN -->
+<!--   style="FONT-SIZE: 11pt"> S.  Floyd and V. Jacobson, <I -->
+<!--   style="mso-bidi-font-style: normal">Random Early Detection Gateways -->
+<!--   for Congestion Avoidance</I>, IEEE/ACM Transactions on Networking, -->
+<!--   Vol. 1, No. 4, pp. 397-413, August 1993.<o:p></o:p></SPAN> -->
+
+
+<!--   <LI class=MsoNormal style="mso-margin-top-alt: auto; -->
+<!--   mso-margin-bottom-alt: auto; mso-list: l10 level1 lfo3; tab-stops: -->
+<!--   list .5in"><B><a href = "740-Papers/DRR.pdf"><SPAN style="FONT-SIZE: -->
+<!--   11pt; COLOR: black">[SV95]</SPAN></a></B><SPAN style="FONT-SIZE: -->
+<!--   11pt"> M.  <SPAN class=SpellE>Shreedhar</SPAN> and G. Varghese<I -->
+<!--   style="mso-bidi-font-style: normal">, Efficient fair <SPAN -->
+<!--   class=SpellE>queueing</SPAN> using deficit round robin</I>, In -->
+<!--   Proc. ACM SIGCOMM, Sept. 1995.<o:p></o:p></SPAN> -->
+
+<!--   <LI class=MsoNormal style="mso-margin-top-alt: auto; -->
+<!--   mso-margin-bottom-alt: auto; mso-list: l10 level1 lfo3; tab-stops: -->
+<!--   list .5in"><B><a href = -->
+<!--   "http://www.sigcomm.org/sigcomm2002/papers/xcp.pdf"><SPAN -->
+<!--   style="FONT-SIZE: 11pt; COLOR: black">[KHR02]</SPAN></a></B><SPAN -->
+<!--   style="FONT-SIZE: 11pt"> Dina <SPAN class=SpellE>Katabi</SPAN>, Mark -->
+<!--   Handley and <SPAN class=SpellE>Chalrie</SPAN> <SPAN -->
+<!--   class=SpellE>Rohrs</SPAN>, <I style="mso-bidi-font-style: -->
+<!--   normal">Congestion Control for High Bandwidth-Delay Product -->
+<!--   Networks</I>, <SPAN class=GramE>In</SPAN> the proceedings on ACM -->
+<!--   <SPAN class=SpellE>Sigcomm</SPAN> 2002.<o:p></o:p></SPAN> -->
+ 
+</UL> 
+
+<!-- <hr size=0> -->
+
+<!-- <SPAN class="gen"> -->
+<!-- <a name="overview"></a><SPAN CLASS="otitle">Router -->
+<!-- Design</SPAN><p> -->
+
+<!-- <ul> -->
+<!--   <li><b>[<a href="http://www.cs.cmu.edu/~srini/15-744/F02/readings/McK97.html">McK97</a>]</b> -->
+<!--   Nick McKeown, <i> A Fast Switched Backplane for a Gigabit Switched -->
+<!--   Router -->
+<!--   </i>, Business Communications Review. </li> -->
+
+
+<!--   <li><b>[skim <a href="http://conferences.sigcomm.org/sigcomm/2003/papers/p189-keslassy.pdf">KCY+03</a>]</b> I. Keslassy et al, <i> -->
+<!--   Scaling Internet Routers Using Optics -->
+<!--   </i>, SIGCOMM 2003. </li> -->
+
+<!--  <li><b>[<a href="http://yuba.stanford.edu/~nickm/papers/HOTI_99.pdf">GM99</a>]</b> P. Gupta et al, <i> -->
+<!--   Packet Classification using Hierarchical Intelligent Cuttings -->
+<!--   </i>, Hot Interconnects 1999. </li> -->
+
+
+<!--   <\!-- <li><b>[<a href="740-Papers/W99.pdf">W99</a>]</b> D. Wetherall, <i> -\-> -->
+<!--   <\!-- Active Networks: Vision and Reality</i>, SOSP 99. </li> -\-> -->
+
+<!-- </ul> -->
+
+<hr size=0>
+
+<SPAN class="gen">
+<a name="overview"></a><SPAN CLASS="otitle">Inter-domain Routing</SPAN><p>
+
+<ul>
+
+ <li><b>[<a href="http://www.cs.princeton.edu/courses/archive/fall17/cos561/papers/BGPInstability98.pdf">BGPStability</a>]</b> C. Labovitz, R. Malan and F. Jahanian, <i> Internet Routing Instability</i>, IEEE Transactions on Networking, 1998. </li>
+
+  <li><b>[Skim: <a href="https://people.cs.umass.edu/~arun/papers/consensus.pdf">ConsensusRouting</a>]</b> John, Katz-Bassett, Krishnamurthy and Anderson, <i> Consensus Routing: The Internet as a Distributed System</i>, NSDI, 2008. </li>
+
+  <li><b>[<a href="http://www.cs.princeton.edu/courses/archive/fall17/cos561/papers/espresso17.pdf">Espresso</a>]</b>
+Yap et. al, <i> Taking the Edge off with Espresso: Scale, Reliability
+and Programmability for Global Internet Peering</i>, SIGCOMM
+2017. </li>
+
+
+    <li><b>[<a href="http://www.cs.princeton.edu/courses/archive/fall17/cos561/papers/BGPpartialSec13.pdf">BGPSec</a>]</b>
+Lychev, Golberg and Schapira, <i> BGP Security in Partial
+Deploymentg</i>, SIGCOMM 2013. </li>
+
+
+<!--   <LI class=MsoNormal style="mso-margin-top-alt: auto; -->
+<!--   mso-margin-bottom-alt: auto; mso-list: l1 level1 lfo5; tab-stops: -->
+<!--   list .5in"><B style="mso-bidi-font-weight: normal"><a href = -->
+<!--   "740-Papers/D+97.pdf"><SPAN style="FONT-SIZE: 11pt; COLOR: -->
+<!--   black">[D+97]</SPAN></a></B><SPAN style="FONT-SIZE: 11pt"> <SPAN -->
+<!--   class=SpellE>Mikael</SPAN> <SPAN class=SpellE>Degermark</SPAN>, -->
+<!--   Andrej <SPAN class=SpellE>Brodnik</SPAN>, <SPAN -->
+<!--   class=SpellE>Svante</SPAN> <SPAN class=SpellE>Carlsson</SPAN> and -->
+<!--   Stephen Pink, <I style="mso-bidi-font-style: normal">Small -->
+<!--   Forwarding Tables for Fast Routing Lookups</I>, ACM SIGCOMM -->
+<!--   97.<o:p></o:p></SPAN> -->
+
+<!-- </ul> -->
+
+<!-- <H4><SPAN style="FONT-SIZE: 11pt">Routing<o:p></o:p></SPAN></H4> -->
+<!-- <UL type=disc> -->
+
+
+<!-- <LI class=MsoNormal style="mso-margin-top-alt: auto; -->
+<!--   mso-margin-bottom-alt: auto; mso-list: l11 level1 lfo4; tab-stops: -->
+<!--   list .5in"><B><a href="740-Papers/SARK02.pdf"><SPAN -->
+<!--   style="FONT-SIZE: 11pt; COLOR: black">[SARK02]</SPAN></a></B><SPAN -->
+<!--   style="FONT-SIZE: 11pt"> <SPAN class=SpellE>Lakshminarayanan -->
+<!--   Subrmanian, Sharad Agarwal, Jennifer Rexford and Randy -->
+<!--   H.Katz</SPAN>.  <I style="mso-bidi-font-style: -->
+<!--   normal">Characterizing the Internet Hierarchy from Multiple Vantage -->
+<!--   Points</I>.  IEEE INFOCOM 2002 , New York, June -->
+<!--   2002.<o:p></o:p></SPAN> -->
+
+<!--   <LI class=MsoNormal style="mso-margin-top-alt: auto; -->
+<!--   mso-margin-bottom-alt: auto; mso-list: l11 level1 lfo4; tab-stops: -->
+<!--   list .5in"><B><a href = "740-Papers/LABJ01.pdf"><SPAN -->
+<!--   style="FONT-SIZE: 11pt; COLOR: black">[LABJ01]</SPAN></a></B><SPAN -->
+<!--   style="FONT-SIZE: 11pt"> Craig <SPAN class=SpellE>Labovitz</SPAN>, -->
+<!--   <SPAN class=SpellE>Abha</SPAN> <SPAN class=SpellE>Ahuja</SPAN>, -->
+<!--   <SPAN class=SpellE>Abhijit</SPAN> Bose and <SPAN -->
+<!--   class=SpellE>Farnam</SPAN> <SPAN class=SpellE>Jahanian</SPAN>, <I -->
+<!--   style="mso-bidi-font-style: normal">Delayed Internet routing -->
+<!--   convergence</I>, In the proceedings of ACM <SPAN -->
+<!--   class=SpellE>Sigcomm</SPAN> 2001.<o:p></o:p></SPAN>  -->
+
+<!--   <LI><B>[<a href = "740-Papers/S+99.pdf">S+99</a>]</B> Stefan Savage, -->
+<!--   Andy Collins, Eric Hoffman, John Snell, and Tom Anderson, -->
+<!--   <i>The End-to-End Effects of Internet Path Selection</I>, ACM -->
+<!--   Sigcomm 1999. -->
+
+  
+<!--   <li> <b>[<a -->
+<!--   href="http://www.sigcomm.org/sigcomm2003/papers/p151-qiu.pdf"><SPAN -->
+<!--   style="FONT-SIZE: 11pt; COLOR: black">Q+03</SPAN></a>]</b> Lili Qiu, -->
+<!--   Yang Richard Yang, Yin Zhang, Scott Shenker, <i>On selfish routing -->
+<!--   in Internet-like environments</i>, ACM Sigcomm 2003. </li> -->
+
+<!--   <LI class=MsoNormal style="mso-margin-top-alt: auto; -->
+<!--   mso-margin-bottom-alt: auto; mso-list: l11 level1 lfo4; tab-stops: -->
+<!--   list .5in"><B style="mso-bidi-font-weight: normal"><a href = -->
+<!--   "740-Papers/Nor00.pdf"><SPAN style="FONT-SIZE: 11pt; COLOR: -->
+<!--   black">[Nor00]</SPAN></a></B><SPAN style="FONT-SIZE: 11pt"> W. -->
+<!--   Norton, <I style="mso-bidi-font-style: normal">Internet Service -->
+<!--   Providers and Peering</I>, 2000.<o:p></o:p></SPAN> -->
+
+
+<!--   <li> <b>[<a -->
+<!--   href="http://www.cs.washington.edu/research/networking/rocketfuel/papers/sigcomm2002.pdf"><SPAN -->
+<!--   style="FONT-SIZE: 11pt; COLOR: black">SMA02</SPAN></a>]</b> -->
+<!--   N. Spring, R. Mahajan and Tom Anderson, <i> Measuring ISP Topologies -->
+<!--   Using Rocketfuel</i>, ACM Sigcomm 2002. </li> -->
+
+ </UL>
+
+
+<!-- <hr size=0> -->
+<!-- <a name="overiew"></a><SPAN CLASS="otitle">Multicast</SPAN><p> -->
+<!-- <UL type=disc>  -->
+
+<!--   <LI><B>[<a href = "740-Papers/DC88.pdf">DC88</a>]</B> S. Deering, -->
+<!--   <i>Multicast Routing in Datagram Internetworks and Extended -->
+<!--   LANs</I>, ACM SIGCOMM 1988. -->
+
+
+<!-- </ul> -->
+
+<hr size=0>
+<a name="overview"></a><SPAN CLASS="otitle">Programmable Networks and
+Software Defined Networking</SPAN><p>
+
+
+<ul> 
+
+
+<LI><B>[<a href
+="http://ccr.sigcomm.org/online/files/p69-v38n2n-mckeown.pdf">OpenFlow</a>]</B>
+Nick McKeown et al, <I> OpenFlow: Enabling Innovation in Campus
+Networks</I>, ACM CCR 2009. Also see Scott Shenker's <a href
+="http://www.youtube.com/watch?v=TuapgeRCPPI">talk</a> at ONS 2011.
+
+  <LI><B>[skim <a href
+="http://www.usenix.org/events/osdi10/tech/full_papers/Koponen.pdf">Onix</a>]</B>
+T. Koponen, M. Casado, N. Gude, J. Stribling, L. Poutievski, M. Zhu,
+R. Ramanathan, Y. Iwata, H. Inoue, T. Hama, S. Shenker, <I> Onix: A
+Distributed Control Platform for Large-scale Production Networks</I>,
+OSDI 2010.
+
+
+<LI><B>[<a href
+="http://yuba.stanford.edu/~grg/docs/sdn-chip-sigcomm-2013.pdf">RMT</a>]</B>
+Pat Bossart et al, <I> Forwarding Metamorphosis: Fast Programmable
+    Match-Action Processing in Hardware for SDN</I>, ACM SIGCOMM 2011.
+
+  <LI><B>[<a href
+="http://web.mit.edu/pifo/pifo-sigcomm.pdf">PIFO</a>]</B>
+A. Sivaraman et al, <I> Programmable Packet Scheduling at Line Rate</I>, ACM SIGCOMM 2016.
+
+
+    <LI><B>[Skim: <a href
+="http://www.cs.yale.edu/homes/yu-minlan/writeup/sigcomm17.pdf">SilkRoad</a>]</B>
+Miao et al, <I> SilkRoad: Making Stateful Layer-4 Load Balancing Fast and
+Cheap Using Switching ASICs</I>, ACM SIGCOMM 2017.
+
+
+    <LI><B>[<a href
+="https://cseweb.ucsd.edu/~vahdat/papers/b4-sigcomm13.pdf">B4</a>]</B>
+S. Jain et al, <I> B4: Experience with a Globally-Deployed
+Software Defined WAN</I>, SIGCOMM 2013.
+
+  
+  <LI><B>[Skim: <a href
+="https://www.sigcomm.org/sites/default/files/ccr/papers/2014/July/0000000-0000004.pdf">P4</a>]</B>
+Pat Bossart et al, <I>P4: Programming Protocol-Independent Packet
+Processors</I>, SIGCOMM CCR 2014.
+
+    <LI><B>[<a href
+="http://frenetic-lang.org/publications/compiler-popl12.pdf">Pyretic</a>]</B>
+C. Monsanto et al, <I> Composing Software Defined Networks</I>, NSDI 2013.
+
+
+</ul>
+
+<hr size=0>
+<a name="overview"></a><SPAN CLASS="otitle">Network Functions and Virtualization</SPAN><p> 
+
+
+<ul> 
+
+
+<LI><B>Andromeda</B>
+M. Dalton et al, <I>Andromeda: Performance, Isolation, and Velocity at Scale in Cloud Network Virtualization
+</I>, NSDI 2018.
+
+  <LI><B>[Skim: <a href
+="https://www.usenix.org/system/files/conference/nsdi14/nsdi14-paper-koponen.pdf">NVP</a>]</B>
+T. Koponen et al, <I> Network Virtualization in Multi-tenant
+Datacenters
+</I>, NSDI 2014.
+
+<LI><B>[<a href
+="http://span.cs.berkeley.edu/static/e2-sosp.pdf">E2</a>]</B>
+S. Palkar et al, <I> E2: A Framework for NFV Applications</I>, SOSP 2015.
+
+  <LI><B>[<a href
+="http://pages.cs.wisc.edu/~akella/papers/opennf.pdf">OpenNF</a>]</B>
+A. Gember-Jacobson et al, <I> Enabling innovation in network function control</I>, SIGCOMM 2014.
+
+  <LI><B>[Skim: <a href
+="https://www.usenix.org/system/files/conference/nsdi14/nsdi14-paper-fayazbakhsh.pdf">FlowTags</a>]</B>
+S. Fayazbaksh et al, <I> Enforcing Network-Wide Policies in the Presence of Dynamic Middlebox Actions using FlowTags</I>, SIGCOMM 2014.
+
+    
+</ul>
+
+<hr size=0>
+<a name="overview"></a><SPAN CLASS="otitle">Application support</SPAN><p>
+<UL type=disc> 
+
+ <LI><B>[<a href ="740-Papers/MD88.pdf">DNS</a>]</B>
+  P. Mockapetris and K.  Dunlap, <I>Development of the Domain Name
+  System</I>, ACM SIGCOMM 1988.
+
+
+  <LI><B>[<a href ="http://nms.lcs.mit.edu/papers/ron-sosp2001.pdf">RON</a>]</B>
+  David Andersen, Hari Balakrishnan, Frans Kaashoek, and Robert Morris, <I>Resilient Overlay Networks</I>, ACM SOSP 2001.
+
+<LI><B>[Skim: <a href
+  =http://www.cs.berkeley.edu/~sekar/papers/comm254-dobrian.pdf>QoE</a>]</B> Florin
+  Dobrian, Vyas Sekar, Asad Awan, Ion Stoica, Aditya Ganjam, Dilip
+  Joseph, Jibin Zhan, Hui Zhang, <i>Understanding the Impact of Video
+  Quality on User Engagement</i>, ACM SIGCOMM 2011.
+
+<LI><B>[<a href ="https://www.usenix.org/system/files/conference/nsdi15/nsdi15-paper-ganjam.pdf">DDN</a>]</B> A. Ganjam et
+  al, <i> C3: Internet-Scale Control Plane for Video Quality Optimization</I>,
+  NSDI 2015.
+
+  <LI><B>[Skim: <a href ="http://i3.cs.berkeley.edu/publications/papers/i3-sigcomm.pdf">DHTs-I3</a>]</B> Stoica et
+  al, <i> Internet Indirection Infrastructure</I>,
+  Sigcomm 2002.
+
+  <LI><B>[<a href ="https://www.usenix.org/system/files/conference/nsdi14/nsdi14-paper-wang_xiao_sophia.pdf">SPDY</a>]</B> Xiao Sophia Wang, Aruna Balasubramanian, Arvind Krishnamurthy,
+and David Wetherall, <i> How Speedy is SPDY?</I>,
+  NSDI 2014.
+
+
+</ul>
+
+<hr size=0>
+<a name="overview"></a><SPAN CLASS="otitle">Data Center Networking</SPAN><p>
+
+<ul>
+
+  <LI><B>[<a href ="http://pages.cs.wisc.edu/~akella/CS838/F09/838-Papers/p51.pdf">VL2</a>]</B> Albert Greenberg, Navendu Jain, Srikanth Kandula, Changhoon Kim, Parantap Lahiri, Dave Maltz, Parveen Patel, and Sudipta Sengupta, <I>
+VL2: A Scalable and Flexible Data Center Network</I>, ACM SIGCOMM 2009.
+
+      <LI><B>[<a href ="http://cseweb.ucsd.edu/~vahdat/papers/helios-sigcomm10.pdf">Helios</a>]</B> Farrington et al, <I>
+Helios: A Hybrid Electrical/Optical Switch
+Architecture for Modular Data Centers</I>, ACM SIGCOMM 2010.
+
+	
+  <LI><B>[<a href
+="http://simula.stanford.edu/~alizade/papers/conga-sigcomm14.pdf">Conga</a>]</B>
+M. Alizadeh et al, <I> CONGA: Distributed Congestion-Aware Load Balancing
+for Datacenters</I>, ACM SIGCOMM 2014.
+
+      <LI><B>[<a href
+="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/rdma_sigcomm2016.pdf">RDMA</a>]</B>
+Gao et al, <I> RDMA over Commodity Ethernet at Scale</I>, ACM SIGCOMM 2016.
+
+</ul>
+
+
+<hr size=0>
+<a name="overview"></a><SPAN CLASS="otitle"> What's Next</SPAN><p>
+
+<ul>
+
+        <LI><B>[<a href
+="https://www.usenix.org/system/files/nsdip13-paper16.pdf">DataPlaneVer</a>]</B>
+Khurshid et al, <I> VeriFlow: Verifying Network-Wide Invariants in Real Time</I>, NSDI 2013.
+
+	          <LI><B>[<a href
+="http://pages.cs.wisc.edu/~akella/papers/sigcomm16-final31.pdf">ControlPlaneVer</a>]</B>
+Aaron Gember-Jacobson, Raajay Viswanathan, Aditya Akella, Ratul
+Mahajan, <I>Fast Control Plane Analysis Using an Abstract
+Representation</I>, SIGCOMM 2016.
+
+		    	          <LI><B>[<a href
+="http://pages.cs.wisc.edu/~sskausik08/papers/popl17genesis.pdf">Synthesis</a>]</B>
+Kausik Subramanian Loris Dâ€™Antoni Aditya Akella, <I>Genesis: Synthesizing Forwarding
+				      Tables in Multi-tenant Networks</I>, POPL 2017.
+
+				    		    	          <LI><B>[<a href
+="https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final13.pdf">FutureInternet</a>]</B>
+D. Han et al, <I>XIA: Efficient Support for Evolvable Internetworking</I>, NSDI 2012.
+
+
+
+</ul>
+
+</SPAN>
+
+
+</BODY></HTML>
+
+
+

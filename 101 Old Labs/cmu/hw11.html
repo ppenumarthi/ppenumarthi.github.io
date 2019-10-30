@@ -1,0 +1,187 @@
+
+<!-- saved from url=(0058)http://www.cs.cmu.edu/~tcortina/15-105sp09/homework11.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>
+15-105 Homework Assignment
+</title>
+</head>
+
+<body>
+
+<h1>15-105 SPRING 2009 [CORTINA]</h1>
+
+<h2>HOMEWORK 11 - due Friday, May 1</h2>
+
+<p>
+</p><h3>WRITTEN PROBLEMS (5 pts)</h3>
+<p>
+<i>Hand these problems in on paper in class on the due date specified.</i>
+</p><p>
+
+</p><ol>
+
+<li>(1 pt)
+<p>
+</p><ol type="a">
+<li>
+Encode the message "CHEYENNE WYOMING" using a Caesar cipher with a shift 
+of +8.
+<p>
+</p></li><li>
+Decode the message "ZKZM STQHMF" that was
+encoded using a Caesar cipher and give
+the shift value that was used to encode the message.  HINT: The first
+word contains 2 vowels.
+</li></ol>
+<p>
+</p></li><li>(1 pt)
+Consider the following public encryption rules for messages used by 
+Alice, Bob and Carol: 
+<p>
+</p><pre>ALICE:    
+	A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+	encodes to:
+	Z A Y B X C W D V E U F T G S H R I Q J P K O L N M
+
+BOB:    
+	A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+	encodes to:
+	Q W E R T Y U I O P A S D F G H J K L Z X C V B N M
+
+CAROL:    
+	A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+	encodes to:
+	M L P N K O B J I V H U C G Y X F T Z D R S E A W Q
+</pre>
+<p>
+The private decryption rules are just the inverses of the
+encryptions shown above.
+</p><p>
+</p><ol type="a">
+<li>
+Alice wants to send the message "MEET ME AT SEVEN" to Bob without a 
+signature. What message does she send to Bob?  
+<p>
+</p></li><li>
+Carol wants to send the message "MEET ME AT EIGHT" to Bob so that Bob 
+knows it came from her. What message should Carol send to Bob?  
+</li></ol>
+<p>
+</p></li><li>(1 pt)
+<p>
+The Loebner Prize for Artificial Intelligence was awarded in 2008 to Fred 
+Roberts and Artificial Solutions. They created an online "bot" called
+Elbot. Hold a conversation with Elbot and describe some of its responses 
+to your comments and questions. 
+How well did it simulate intellect in your opinion? Were 
+some answers better than others? Give an example.
+</p><p>
+<img src="./hw11_files/elbot.jpg" width="200" height="150">
+</p><p>
+</p></li><li>(2 pts)
+In the game of Connect Four, the play area consists of a 
+vertical grid of 6 rows and 7 columns. Players alternate turns, 
+dropping a single checker into one of the columns. The 
+checker will slide down as far as it can go. The object is to be 
+the first player to get four checkers in a straight line 
+(horizontally, vertically or diagonally). We wish to build a 
+game tree that analyzes all the available moves in the game to 
+find the best move. 
+<p>
+<img src="./hw11_files/connect4.jpg" height="150" width="200">
+</p><p>
+</p><ol type="a">
+<li>
+Starting with a root node that represents an empty 
+grid, how many nodes will be on the first level of the 
+game tree below the root? 
+<p>
+</p></li><li>
+How many nodes will be at the second level of the game tree below the 
+root?  
+<p>
+</p></li><li>
+At what level would the first leaf of the game tree occur? Why?  
+<p>
+</p></li><li>Why would a computer use a heuristic to determine its move rather than 
+a game tree?
+<p>
+</p></li></ol>
+</li></ol>
+
+<h3>COMPUTER PROBLEM (5 pts)</h3>
+<p>
+<i>Hand this in electronically using the 
+<a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/handin.html">Electronic Handin System</a> by 11:59PM on the due 
+date indicated.
+</i>
+</p><p> 
+Write a complete Python program that reads in 20 exam scores from a file,
+sorts these grades into increasing order, 
+and displays a bar graph in a 300 X 300 window showing the grades 
+in increasing order as 
+vertical bars (alternating yellow and green, starting with yellow)
+where each bar's height is proportional to the corresponding grade
+along with  
+a blue horizontal line
+that shows the average grade. The grades are stored one per line in the 
+file. All grades are between 0 and 100. 
+A sample result is shown below (the blue line is the average):
+</p><p>
+<img src="./hw11_files/examgraph.jpg">
+</p><p>
+Sample data file: <a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/examdata.txt">examdata.txt</a>
+</p><p>
+Here is a main function for you to start with:
+</p><p>
+</p><pre>def main():
+        win = GraphWin("Exam Grade Display", 300, 300)
+        filename = raw_input("Input filename: ")
+        grades = readGrades(filename)
+        grades = sort(grades)
+        average = computeAvg(grades)
+        drawBars(win, grades)
+        drawLine(win, average)
+        print grades
+        print "AVERAGE =", average
+        raw_input("Press ENTER to quit.")
+        win.close()
+</pre>
+<p>
+Write separate functions for each of the following steps:
+</p><p>
+</p><ul>
+<li>
+Read in the data from the file into an array.<br>
+Parameter: The name of the file to open.<br>
+Return: The array with the grades in it.
+<p>
+</p></li><li>
+Sort the data in the array.<br>
+Parameter: The array with the grades in it.<br>
+Return: The array with the grades in it after it is sorted.
+<p>
+</p></li><li>
+Compute and return the average of the values in the array<br>
+Parameter: The array with the grades in it.<br>
+Return: The average of the grades in the array.
+<p>
+</p></li><li>
+Draw the bars of the graph.<br>
+Parameters: The window to draw in and the array with the grades in it.<br>
+Return: nothing
+<p>
+</p></li><li>
+Draw the horizontal line on the graph for the average grade.<br>
+Parameters: The window to draw in and the average grade.<br>
+Return: nothing
+
+</li></ul>
+
+
+
+
+
+
+
+</body></html>

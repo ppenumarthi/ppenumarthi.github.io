@@ -1,0 +1,218 @@
+
+<!-- saved from url=(0057)http://www.cs.cmu.edu/~tcortina/15-105sp09/homework5.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>
+15-105 Homework Assignment
+</title>
+</head>
+
+<body>
+
+<h1>15-105 SPRING 2009 [CORTINA]</h1>
+
+<h2>HOMEWORK 5 - due Friday, February 27</h2>
+
+<p>
+<b>WRITTEN PROBLEMS (8 pts)</b>
+</p><p>
+<i>Hand these problems in on paper in class on the due date specified.</i>
+</p><p>
+</p><ol>
+<li>(1 pt) 
+Consider the following recursive Python function, where n &#8805; 1:
+<p>
+</p><pre>def f(n):
+	if n == 1:
+		return 1
+	else:
+		return n + f(n-1)
+</pre>
+<p>
+</p><ol type="a">
+<li>
+Why is it recursive?
+<p>
+</p></li><li>
+Determine the output of the following Python instruction by tracing its 
+execution in the Python function above: 
+<p>
+<tt>print f(8)</tt>
+</p><p>
+</p></li><li>What is this recursive function computing?
+</li></ol>	
+<p>
+
+</p></li><li>(1 pt) Let B(n) = the number of n-bit binary numbers that do not 
+contain two adjacent 1's.  When n = 1, there are two 1-bit binary numbers 
+that do not contain two adjacent 1's: 0, 1. When n = 2, there are three 
+2-bit binary numbers that do not contain two adjacent 1's: 00, 01, 10. In 
+general, B(n) is given by the following formulas for n &#8805; 1: 
+<p> 
+B(n) = B(n-2) + B(n-1), n &gt; 2 <br>
+B(2) = 3 <br>
+B(1) = 2 
+</p><p> 
+</p><ol type="a">
+<li>Draw a complete recursion tree to compute B(5). 
+<p>
+</p></li><li>Verify your answer from part (a) by writing out all 5-bit binary 
+numbers and crossing out those numbers that have at least two 1's that 
+are adjacent to each other. How many 5-bit binary numbers are left?  
+<p>
+</p></li><li>How are the values of B(n) related to multiplying pairs of rabbits? 
+Explain. 
+</li></ol>
+<p>
+</p></li><li>
+(1.5 pt) The following algorithm creates a fractal given a square:
+<p>
+</p><pre>1. Divide the square into 9 equal sized squares (like a tic-tac-toe board).
+2. Color in the middle square.
+3. Recursively perform this algorithm on all of the non-colored squares.
+</pre>
+<p>
+</p><ol type="a">
+<li>
+Print out <a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/gridpaper.pdf">this sheet of grid paper</a> and 
+trace this algorithm with a square of size 27 X 27. 
+<p>
+</p></li><li>
+Determine the number of non-colored squares in your fractal WITHOUT 
+counting all of the non-colored squares. Explain your answer.
+</li></ol>
+<p>
+</p></li><li>
+(1 pt)
+Given the following recursive Scheme function:
+<p>
+</p><pre>(define (compute numlist)
+   (if (null? numlist)
+       1
+       (* (first numlist) (compute (rest numlist)))
+   )
+) 
+</pre>
+<p>
+What does the following Scheme function return as its result?
+</p><p>
+</p><pre>(compute (list 2 3 5 7))
+</pre>
+<p>
+Show your work by performing a series of substitutions to show how Scheme 
+evaluates the function.
+</p><p>
+
+</p></li><li>
+(1 pt)
+Recall the following Prolog definitions given in class:
+<p>
+</p><pre>parent(alice, carol). 
+parent(bob, carol). 
+parent(bob, david). 
+parent(carol, ethel). 
+parent(carol, fred). 
+parent(fred, gayle).
+</pre>
+<p>
+Using the <tt>parent</tt> relationship,
+define Prolog rule(s) for <tt>descendant</tt>. (Hint: Think recursively.)
+</p><p>
+</p></li><li>
+(1 pt)
+Write a recursive Python function that returns 2<sup>n</sup>, for 
+any integer n, n &#8805; 0.
+(HINT: 2<sup>n</sup> = 2 * 2<sup>n-1</sup> when n &gt; 0.)
+<p>
+</p></li><li>
+(1.5 pts)
+This <a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/hw5chart.pdf">flowchart</a> merges two sorted vectors 
+A and B with n cells each 
+into a new sorted vector C with 2n cells. Trace this flowchart for the two 
+vectors shown (where n=4), showing the values for indexA, indexB, indexC 
+and the contents of vector C each time you reach a camera symbol.
+<p>
+
+
+</p></li></ol>
+
+<h3>COMPUTER PROBLEM (2 pts)</h3>
+<p>
+<i>Hand this in electronically using the 
+<a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/handin.html">Electronic Handin System</a> by 11:59PM on the due 
+date indicated.
+</i>
+</p><p> 
+Write a Python function that has two parameters representing the 
+amount invested in a one-year certificate of deposit and the annual 
+interest rate 
+and returns the amount in the account after one year.  For example, if the 
+amount invested is 1000 dollars and the annual interest rate is 3.0 
+percent, then the function should return 1030. (NOTE: When we say 
+"return", we don't mean "print" or "output". We mean "return" the
+result to the part of the program that calls this function.)
+<b>This function is NOT recursive.</b>
+</p><p>
+Now write a main function that asks the user for an initial amount to 
+invest in a one-year certificate of deposit and the annual interest rate, 
+and displays the amount in the certificate of deposit after each year for 
+30 years. Assume the user does not deposit or withdraw any money from this 
+account during the 30 years. 
+</p><p>
+Basic algorithm for <tt>main</tt>:
+</p><p>
+</p><pre>1. Input amount for initial investment and store this as your current amount.
+2. Input annual interest rate.
+3. Repeat the following 30 times:
+   a. Call your other function with the current amount and rate,
+      and store its returned value as your new current amount.
+   b. Output the year number and current amount.
+</pre>
+<p>
+For example, here is a sample run of this program:
+</p><p>
+</p><pre>Input initial investment amount: 1000
+Input annual interest rate: 3 
+Year 	Amount
+1 	1030.0
+2 	1060.9
+3 	1092.73
+4 	1125.51
+5 	1159.28
+6 	1194.06
+7 	1229.88
+8 	1266.78
+9 	1304.78
+10 	1343.92
+11 	1384.24
+12 	1425.77
+13 	1468.54
+14 	1512.6
+15 	1557.98
+16 	1604.72
+17 	1652.86
+18 	1702.45
+19 	1753.52
+20 	1806.13
+21 	1860.31
+22 	1916.12
+23 	1973.6
+24 	2032.81
+25 	2093.79
+26 	2156.6
+27 	2221.3
+28 	2287.94
+29 	2356.58
+30 	2427.28
+</pre>
+<p>
+To round the amounts to the nearest cent, multiply the amount by 100.0, 
+round it off to the nearest integer using the <tt>round</tt> function, and 
+then divide by 100.0. You do not have to worry about the missing zeroes if 
+the number of cents is a multiple of 10 (e.g. 2156.6 is ok).
+
+
+
+
+
+
+</p></body></html>

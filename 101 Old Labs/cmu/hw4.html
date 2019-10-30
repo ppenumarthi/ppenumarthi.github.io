@@ -1,0 +1,213 @@
+
+<!-- saved from url=(0057)http://www.cs.cmu.edu/~tcortina/15-105sp09/homework4.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>
+15-105 Homework Assignment
+</title>
+</head>
+
+<body>
+
+<h1>15-105 SPRING 2009 [CORTINA]</h1>
+
+<h2>HOMEWORK 4 - due Friday, February 20</h2>
+
+<p>
+<b>WRITTEN PROBLEMS (8 pts)</b>
+</p><p>
+<i>Hand these problems in on paper in class on the due date specified.</i>
+</p><p>
+</p><ol>
+<li>(1 pt) For the following graph, show how to store this graph using an 
+adjacency matrix and an adjacent list.
+<p>
+<img src="./hw4_files/hw4-1.jpg">
+</p><p>
+</p></li><li>
+(1 pt) The graph above represents islands of an island nation, and each 
+edge represents an individual ferry that shuttle passengers between 
+a pair 
+of islands. The costs on the edges represent the cost to operate each
+ferry in millions of dollars. The government wants to reduce ferry service
+due to
+high fuel costs, so they want to eliminate ferries that are not needed.
+Use the minimal spanning tree algorithm shown in class to solve this problem. 
+List the island-to-island connections that you want to 
+keep, in 
+the order you select them, and give the minimum total cost of the ferries 
+needed (in millions of dollars)
+so that all islands remain connected to each other.
+<p>
+</p></li><li>
+(1 1/2 pts) The form for a floating point number in a programming language 
+could be 
+defined by the EBNF rules below. Note that the period (<tt>.</tt>) , the 
+digits <tt>0</tt> through <tt>9</tt> and the letter <tt>E</tt> are literals. 
+<p>
+digit &#8592; <tt>0</tt> | <tt>1</tt> | <tt>2</tt> | <tt>3</tt> | <tt>4</tt> | 
+<tt>5</tt> | <tt>6</tt> | <tt>7</tt> | <tt>8</tt> | <tt>9</tt>
+<br>
+base &#8592; digit { digit } <tt>.</tt> digit { digit }
+<br>
+exponent &#8592; <tt>E</tt> digit digit
+<br>
+float_number &#8592; base [ exponent ]
+</p><p>
+(a) Show that the following strings are valid floating point numbers by 
+deriving them from the float_number rule above.
+</p><p>
+</p><ul>
+<li><tt>43.814E12</tt>
+</li><li><tt>352.1</tt>
+</li></ul>
+<p>
+(b) Draw a syntax diagram for each of the EBNF rules above.
+</p><p>
+(c) For each of the following strings, explain why they are not valid floating 
+point numbers according to the EBNF rules above.
+</p><p>
+</p><ul>
+<li><tt>2.6E9</tt>
+</li><li><tt>.183</tt>
+</li></ul>
+<p>
+
+</p></li><li>(1 pt) <p>
+(a) A central processing unit (CPU) of a computer only executes instructions 
+written in what language?
+</p><p> 
+(b) What is the purpose of a compiler?
+</p><p>
+(c) High-level programs can be translated for the CPU to execute only if they 
+do not contain what kind of errors?
+</p><p>
+(d) What is the difference between an interpreter and a compiler?
+</p><p>
+
+</p></li><li>(1 pt) 
+Consider the following Pascal program. You may assume n &gt; 0. 
+<p>
+</p><pre>program mystery(input,output); 
+var i, sum, n: integer; 
+begin 
+   read(n); 
+   i := 1; 
+   sum := 0; 
+   repeat 
+      sum := sum + i; 
+      i := i * 2; 
+   until i = n; 
+   writeln(sum + 1); 
+end. 
+</pre>
+<p>
+(a) What does the 2nd line in the Pascal program specify? How does this differ 
+from Python?
+</p><p>
+(b) Draw a flowchart for the loop in the program above. 
+</p><p>
+(c) What computation is the program performing with respect to n? 
+</p><p>
+</p></li><li>(1 1/2 pts)<p>
+Consider the following Scheme definitions for cars that include the make, 
+mileage, color and fuel efficiency (mpg), respectively: 
+</p><p>
+</p><pre>(define mustang (list 'Ford 4328 'red 26))
+(define sonata (list 'Hyundai 54326 'black 30)) 
+(define traverse (list 'Chevrolet 3820 'white 24)) 
+(define civic (list 'Honda 72019 'silver 36)) 
+(define prius (list 'Toyota 2144 'green 48))
+</pre>
+<p>
+(a) What is the value of <tt>(first traverse)</tt>? What is the value of 
+<tt>(rest prius)</tt>? 
+</p><p>
+(b) Complete the following Scheme definition: 
+</p><p>
+</p><pre>(define (color car) 
+     (________________________________)) 
+</pre>
+<p>
+(c) Using the following Scheme function definition:
+</p><p>
+</p><pre>(define (compute car1 car2 car3) 
+     (+ (first (rest car1)) (first (rest car2)) (first (rest car3)) ) )
+</pre>
+What does the following Scheme function return as its result?
+<p>
+</p><pre>(compute sonata civic mustang)</pre> 
+<p>
+Show your work by performing a series of substitutions to show how 
+Scheme evaluates the function. 
+</p><p>
+
+</p></li><li>(1 pt)
+Here is a set of Prolog rules. 
+<p>
+</p><pre>parent(homer, bart).   
+parent(homer, lisa).   
+parent(homer, maggie).   
+parent(marge, bart).   
+parent(marge, lisa).   
+parent(marge, maggie).   
+parent(abe, homer).    
+parent(jacqueline, marge).  
+parent(jacqueline, patty).  
+parent(jacqueline, selma). 
+male(bart).   
+male(homer). 
+male(abe). 
+female(marge). 
+female(lisa). 
+female(maggie). 
+female(jacqueline). 
+female(patty). 
+female(selma). 
+father(X,Y) :- parent(X,Y), male(X). 
+mother(X,Y) :- parent(X,Y), female(X). 
+grandparent(X,Y) :- parent(X,Z), parent(Z,Y).
+</pre>
+<p>
+What is each of the following Prolog queries asking (in English)? What are the 
+results of each query based on the rules above?
+</p><p>
+</p><pre>?- female(homer).
+
+?- parent(X, marge).
+
+?- grandparent(abe, Y).
+
+?- father(X, Y).
+</pre>
+</li></ol>
+
+<h3>COMPUTER PROBLEM (2 pts)</h3>
+<p>
+<i>Hand this in electronically using the 
+<a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/handin.html">Electronic Handin System</a> by 11:59PM on the due 
+date indicated.
+</i>
+</p><p> 
+Write a short Python program that processes an array of data and reverses the 
+order of the data. For example, if your original array is [3,1,6,4,8], then 
+your program should output [8,4,6,1,3]. Don't just print each element 
+starting from the last element, working backwards. You should <i>change</i> 
+the array so it really is reversed before you print it (see the algorithm 
+below).  Your program should work for any size array.
+</p><p>
+Basic Algorithm:
+</p><p>
+</p><pre>1. Create an array A with integers in it.
+2. Set i = 0
+3. Set n = (length of the array A)
+4. Exchange A[i] with A[n-1-i]
+5. Add 1 to i
+6. Go to step 4 and repeat until the array is reversed
+</pre>
+
+
+
+
+
+
+</body></html>

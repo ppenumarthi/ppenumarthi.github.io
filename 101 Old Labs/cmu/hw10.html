@@ -1,0 +1,309 @@
+
+<!-- saved from url=(0058)http://www.cs.cmu.edu/~tcortina/15-105sp09/homework10.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>
+15-105 Homework Assignment
+</title>
+</head>
+
+<body>
+
+<h1>15-105 SPRING 2009 [CORTINA]</h1>
+
+<h2>HOMEWORK 10 - due Wednesday, April 22</h2>
+
+<p>
+</p><h3>WRITTEN PROBLEMS (8 pts)</h3>
+<p>
+<i>Hand these problems in on paper in class on the due date specified.</i>
+</p><p>
+
+</p><ol>
+
+<li>(1.5 pts)
+A parallel processor has three processors, each running a computation at 
+the same time that includes the following instructions which all 
+reference the same variable X. No other instruction changes the variable 
+X. (^ represents exponentiation: X^3 means X<sup>3</sup>.)
+<p>
+</p><pre>PROCESSOR 1        PROCESSOR 2         PROCESSOR 3
+-----------        -----------         -----------
+ :                  :                   :
+ :                  :                   :
+X &lt;-- X + 3        X &lt;-- X * 3         X &lt;-- X ^ 3
+ :                  :                   :
+ :                  :                   :
+</pre>
+<p>
+</p><ol type="a">
+<li>
+Assuming that each instruction is "atomic", how 
+many different outcomes can we have for the variable X after all 
+processors are finished? (Remember, each processor may not get to its 
+specified instruction at the same time.)
+<p>
+</p></li><li>
+What is the final value of X for each of the possible outcomes from part 
+(a) assuming X starts out with the value 2 before the processors compute 
+in parallel?
+<p>
+</p></li><li>
+What does it mean for an instruction to be "atomic"?
+</li></ol>
+<p>
+</p></li><li>(1 pt)
+A computation on a single processor takes 8 minutes (480 seconds). 
+<p>
+</p><ol type="a">
+<li>
+If this computation were performed on a parallel processor with 12 
+processors of the same speed as the original single processor,
+what is the fastest this computation could be performed,
+ignoring any overhead required to split the computation to run in 
+parallel? Explain your answer.
+<p>
+</p></li><li>
+If 1/4 of this computation must be performed sequentially (i.e. not
+in parallel), how long will this computation take according to
+Amdahl's Law on a parallel processor with 12 processors of the same
+speed as the original single processor? 
+Show your work.
+</li></ol>
+<p>
+</p></li><li>(1 pt)
+At a furniture factory, a bookcase is manufactured using the following 
+four steps in sequence:
+<p>
+</p><pre>1. Cut the wood pieces (30 minutes) 
+2. Sand and stain the wood pieces (50 minutes) 
+3. Drill pilot holes for all screws (10 minutes) 
+4. Screw pieces together to assemble bookcase (20 minutes) 
+</pre>
+<p>
+</p><ol type="a">
+<li>
+If one bookcase is made at a time, and the factory wants to make 600 
+bookcases, how many minutes would it take to complete this task? 
+<p>
+</p></li><li>
+If the factory utilized pipelining and had four work stations, one for 
+each step above, how many minutes would it take to complete this task? 
+Show your work.
+</li></ol>
+<p>
+
+</p></li><li>(1 pt)
+In class, we saw how a pipeline can be used to perform matrix 
+multiplication. Suppose we want to compute the average for a class of 1000 
+students and the class consists of 10 graded items. Each multiply-add 
+operation is one multiplication and one addition.
+<p>
+</p><ol type="a">
+<li>
+How many muliply-add operations are required to compute the results 
+sequentially without pipelining?
+<p>
+</p></li><li>
+If we use pipelining, how many multiply-add operations do we save? 
+Explain your answer.
+</li></ol>
+<p>
+
+</p></li><li>(1.5 pts)
+A computational unit for a concurrent network is  
+shown below. Its top output is the sum of its inputs.  
+Its bottom output is the difference of its inputs. The  
+concurrent network also shown below is made up of 12 of these  
+computational units. (A network like this is used to  
+compute the Fast Fourier Transform, which is used  
+in applications such as digital signal processing for music.) 
+<p>
+<img src="./hw10_files/hw10_fftunit.jpg"><br>
+<i>A single computational unit.</i>
+</p><p>
+<img src="./hw10_files/hw10_fftnetwork.jpg"><br>
+<i>A network of computational units.</i>
+</p><p>
+</p><ol type="a">
+<li>
+Using the data shown at the left, what is the data that will be stored at 
+the right? Show your work.
+<p>
+</p></li><li>
+If each computational unit takes time t to compute its output, how long 
+does it take to compute the final output of this network concurrently? 
+Explain.
+<p>
+</p></li><li>
+If we wanted to use this network for 10 sets of 8 data values, what is the 
+minimum amount of time that it will take to compute the final output for 
+all 10 sets of data based on your answer in part (b)? (HINT: Think 
+pipelining!)
+</li></ol>
+<p>
+</p></li><li>(2 pts)
+In class, we discussed a situation called <i>deadlock</i> which can cause 
+a system to stop functioning. 
+<p>
+</p><ol type="a">
+<li>
+Consider a main road (shown running left to right) with two side roads. 
+All roads have single lanes in each direction.
+<p>
+<img src="./hw10_files/hw10_roads.jpg">
+</p><p>
+Explain how deadlock can occur on the main road. Draw a picture to help 
+illustrate your answer. 
+</p><p>
+</p></li><li>
+Consider two programs running simultaneously, each wanting access to 
+the same two databases. When a program 
+accesses one database, it locks it so another program cannot use it.
+Once the program is done using the database, it unlocks the database.
+If a program tries to access a database and it is locked, it waits
+until it is unlocked. 
+Explain how deadlock can occur for these two programs.
+</li></ol>
+
+
+
+</li></ol>
+
+<h3>COMPUTER PROBLEM (2 pts)</h3>
+<p>
+<i>Hand this in electronically using the 
+<a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/handin.html">Electronic Handin System</a> by 11:59PM on the due 
+date indicated.
+</i>
+</p><p> 
+Last week, you started work on the 
+Line 'Em Up game which consists of a 3 X 6 grid of circles of 6 
+colors, 3 of each. The 
+goal is to rotate the lights horizontally and vertically until every 
+column has a light of a 
+single color. A sample game board is shown below. Note that there is an 
+extra row and column in the game window. 
+</p><p>
+<img src="./hw10_files/lineemup1.jpg">
+</p><p>
+In this problem, you will complete the Python program so it plays the 
+game correctly. Start with the following Python program
+(right-click <a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/lineemup.py">HERE</a> for a copy on your computer):
+</p><p>
+</p><pre># lineemup.py
+# Program that plays a Line 'Em Up game
+
+from graphics import *
+
+def main():
+	filename = raw_input("Input name of data file: ")
+	window = GraphWin("Line 'Em Up", 350, 200)
+
+	colorarray = initialize_array(filename)
+	draw_lines(window)
+	display_circles(window,colorarray)
+	game_over = False
+	while game_over == False:
+		p = window.getMouse()
+		column = p.getX()/50  # compute column where player clicked
+		row = p.getY()/50     # compute row where player clicked
+		update_array(colorarray, row, column)
+		display_circles(window,colorarray)
+		game_over = check_for_winner(colorarray)
+	print "GAME OVER"
+	raw_input("Press &lt;ENTER&gt; to quit.")
+	window.close()
+
+def initialize_array(filename):
+	infile = open(filename, "r")
+	colorarray = []
+	for i in range(3):
+		colorarray.append([])
+	for row in range(3):
+		for column in range(6):
+			colorvalue = eval(infile.readline())
+			colorarray[row].append(colorvalue)
+	return colorarray
+
+def draw_lines(window):
+	for i in range(6):
+		line = Line(Point(50*(i+1),0),Point(50*(i+1),200))
+		line.draw(window)
+	for j in range(3):
+		line = Line(Point(0,50*(j+1)),Point(350,50*(j+1)))
+		line.draw(window)
+
+def display_circles(window,colorarray):
+	colors = ["blue","green","cyan","red","magenta","yellow"]
+	for row in range(3):
+		for column in range(6):
+			center = Point(column*50+25,row*50+25)
+			circ = Circle(center,20)
+			circ.setFill(colors[colorarray[row][column]])
+			circ.draw(window)
+
+def update_array(colorarray,row,column):
+	# to be completed by you
+	return	# remove this line when you complete this function
+
+def check_for_winner(colorarray):
+	# to be completed by you
+	return False   # remove this line when you complete this function
+
+main()		
+</pre>
+<p>
+When the player clicks in one of the first six empty boxes along the 
+bottom, you will rotate that column of the board one position 
+<font color="#FF0000">UP</font> 
+(moving the first color into the last position of that column). When the 
+player clicks in one of the first three empty boxes along the right, you 
+will rotate that row of the board one position to the 
+<font color="#FF0000">LEFT</font> (moving the 
+first color into the last position of that row). Nothing happens if
+a player clicks the empty box in the bottom right or on any box with a 
+circle.
+</p><p>
+You will need to complete the two functions: <tt>update_array</tt> 
+and <tt>check_for_winner</tt>.
+</p><p>
+The <tt>update_array</tt> function follows the following algorithm (read 
+carefully):
+</p><p>
+</p><pre><font color="#FF0000">
+1. If row = 3 and column &#8800; 6 do the following:
+   a. Set temp equal to colorarray[0][column].
+   b. For i in the range 0 to 1, do the following:
+      i. Copy colorarray[i+1][column] into colorarray[i][column].
+   c. Set colorarray[2][column] equal to temp.
+2. If column = 6 and row &#8800; 3 do the following:
+   a. Set temp equal to colorarray[row][0].
+   b. For i in the range 0 to 4, do the following:
+      i. Copy colorarray[row][i+1] into colorarray[row][i].
+   c. Set colorarray[row][5] equal to temp.
+</font> 
+</pre>
+<p>
+The <tt>check_for_winner</tt> function should return True if each column 
+contains only one color. Use this algorithm:
+</p><p>
+</p><pre>1. Set column = 0.
+2. While column &lt; 6, do the following:
+   a. If colorarray[0][column] &#8800; colorarray[1][column], return False immediately.
+   b. If colorarray[1][column] &#8800; colorarray[2][column], return False immediately.
+   c. Add 1 to column.
+3. Return True.
+</pre>
+<p>
+NOTE: When you use the <tt>return</tt> instruction in a function in 
+Python, it returns immediately to the calling function without completing 
+the rest of the current function.
+</p><p>
+Use the data file from homework 9 to test your game.
+</p><p>
+
+
+
+
+
+</p></body></html>

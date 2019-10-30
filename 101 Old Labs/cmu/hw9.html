@@ -1,0 +1,213 @@
+
+<!-- saved from url=(0057)http://www.cs.cmu.edu/~tcortina/15-105sp09/homework9.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>
+15-105 Homework Assignment
+</title>
+</head>
+
+<body>
+
+<h1>15-105 SPRING 2009 [CORTINA]</h1>
+
+<h2>HOMEWORK 9 - due Friday, April 10</h2>
+
+<p>
+<b>WRITTEN PROBLEMS (8 pts)</b>
+</p><p>
+<i>Hand these problems in on paper in class on the due date specified.</i>
+</p><p>
+
+</p><ol>
+
+<li>(2 pts)
+Let A be the set of all programs such that each program in this set has no 
+input and 
+outputs a single integer as its answer after it does its computation. For 
+example, the 
+program that computes and prints out the sum of the integers from 1 to 100 
+is one of the 
+programs in this set.  
+Now, let X be a new program that analyzes any program from the set A. If 
+the program it 
+analyzes outputs an even integer, X outputs the word "EVEN"; otherwise it 
+outputs "ODD". 
+Finally, let Y be a new program that runs X to analyze itself (Y). If X 
+outputs "EVEN", 
+then Y outputs 1. If X outputs "ODD", then Y outputs 2.  
+<p>
+</p><ol type="a">
+<li>
+Explain why Y is one of the programs in set A. 
+<p>
+</p></li><li>
+Explain why there is a contradiction if Y outputs 1. 
+<p>
+</p></li><li> 
+Explain why there is a contradiction if Y outputs 2. 
+<p>
+</p></li><li> 
+What does all of this say about the existence of program X? 
+</li></ol>
+<p>
+
+</p></li><li>
+Consider the Turing machine shown below.
+<p>
+<img src="./hw9_files/hw9-2.jpg">
+</p><p>
+</p><ol type="a">
+<li>
+List the sequence of states that the machine goes through for each
+of the following initial tapes (the starting position of the tape head
+is shown with the ^ symbol):
+<p>
+</p><pre>###1001010###
+   ^
+###01010###
+   ^
+###0000011111###
+   ^
+</pre>
+<p>
+</p></li><li>
+In one sentence, explain what this machine is "accepting". (That is,
+what types of binary data on the tape make it halt?)
+</li></ol>
+<p>
+
+</p></li><li>(2 pts)
+Draw a Turing machine that halts if and only if the tape contains 
+alternating X's and Y's, starting and ending with an X. For example, the 
+machine should halt if the tape starts with the pattern XYXYXYX on it, but 
+it should run forever if it starts with the pattern XYYX or XYXYXY on it. 
+You may assume that the machines starts on the leftmost non-blank symbol 
+on the tape. (HINT: You will need four states in your machine.)
+<p>
+
+</p></li><li>(2 pts)
+A toll gate has two sensors in the road, as shown below:
+<p>
+<img src="./hw9_files/hw9-4.jpg">
+</p><p>
+The gate opens when the sensor S is on and the sensor T is off. The gate 
+closes when sensor S is off and sensor T is on. As a car approaches, it 
+will cross over sensor S first, which should open the gate. It will 
+continue on, being over both sensors, until it clears sensor S. This 
+should close the gate. Then the car will proceed forward until it clears 
+sensor T. If another car approaches, the gate should not open until the 
+previous car clears sensor T.
+</p><p>
+Complete the state diagram for this toll gate with two states: OPEN and 
+CLOSED. Determine what logical condition is required to move from one 
+state to the other state, and what condition is required to stay in each 
+of the states. Use the variables S and T to represent the sensors and the 
+operators <font face="arial">&amp;</font> and <font face="arial">v</font> for 
+the logical operations AND and OR respectively. If 
+you write S, this means that the S sensor is on (i.e. the car is over that 
+sensor) and if you write ~S, this means that the S sensor is off (i.e. 
+there is no car over that sensor).
+</p><p>
+
+
+
+
+</p></li></ol>
+
+<h3>COMPUTER PROBLEM (2 pts)</h3>
+<p>
+<i>Hand this in electronically using the 
+<a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/handin.html">Electronic Handin System</a> by 11:59PM on the due 
+date indicated.
+</i>
+</p><p> 
+The Line 'Em Up game consists of a 3 X 6 grid of circles of 6 
+colors, 3 of each. The 
+goal is to rotate the lights horizontally and vertically until every 
+column has a light of a 
+single color. A sample game board is shown below. Note that there is an 
+extra row and column in the game window. 
+</p><p>
+<img src="./hw9_files/lineemup1.jpg">
+</p><p>
+The colors of the game are stored in an array of integers with 3 rows and 
+6 columns. Each cell stores a number from 0 to 5, representing the 
+following colors: 
+</p><p>
+</p><pre>0 = blue   2 = cyan  4 = magenta 
+1 = green  3 = red   5 = yellow 
+</pre>
+<p>
+So for the window shown above, the corresponding array would be:
+</p><p>
+</p><pre>3 3 4 0 1 2
+2 2 4 5 0 0
+1 3 4 5 5 1
+</pre>
+<p>
+In this problem, you will complete a Python program so it draws the 
+initial game. (You will complete the game in homework 10.) Start with the 
+following Python main function:
+</p><p>
+</p><pre>from graphics import *
+
+def main():
+        window = GraphWin("Line 'Em Up", 350, 200)
+        draw_lines(window)
+        filename = raw_input("Input name of data file: ")
+        colorarray = initialize_array(filename)
+        display_circles(window,colorarray)
+        raw_input("Press &lt;ENTER&amp;rt; to quit.")
+        window.close()
+
+def draw_lines(window):
+	# you will complete this function
+
+def initialize_array(filename):
+	# you will complete this function
+
+def display_circles(window,colorarray):
+	# you will complete this function
+
+main()
+</pre>
+<p>
+You will need to complete the three functions: <tt>draw_lines</tt>, 
+<tt>initialize_array</tt>, and <tt>display_circles</tt>.
+</p><p>
+The <tt>draw_lines</tt> function should draw horizontal and vertical lines 
+to divide the window up into 28 square regions, each region of size 50 X 
+50. Do this using a loop to draw the vertical lines and another loop to 
+draw the horizontal lines, rather than drawing the 9 required lines 
+individually. 
+</p><p>
+The <tt>initialize_array</tt> function should open the given filename, 
+create an empty array with 3 empty arrays inside of it (one for each row), 
+and then read each color number from the file and store them in the array 
+in the appropriate row. When you're done, you should have an array with 3 
+rows and 6 columns. Your function should return the array back to the 
+main function.
+</p><p>
+</p><blockquote>
+The numbers for the array will be stored in a data file, one integer per 
+line, row by row. Click <a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/hw9data.txt">HERE</a> for a sample of the 
+data file for the game shown above. You can right-click the link to save 
+the file on your computer.
+</blockquote>
+<p>
+The <tt>draw_circles</tt> function should scan through the array of colors 
+and draw a circle of the appropriate color in the appropriate position in 
+the window. You should use loops here to simplify your code. Don't type in 
+18 separate circle commands.
+</p><p>
+<b>HINT: Review the Python instructions for the Lights Out game. The 
+functions you have to write here are similar to functions in the lab 
+example.</b>
+
+
+
+
+
+
+
+</p></body></html>

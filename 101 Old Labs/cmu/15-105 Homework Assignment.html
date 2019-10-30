@@ -1,0 +1,117 @@
+
+<!-- saved from url=(0057)http://www.cs.cmu.edu/~tcortina/15-105sp09/homework2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>
+15-105 Homework Assignment
+</title>
+</head>
+
+<body>
+
+<h1>15-105 SPRING 2009 [CORTINA]</h1>
+
+<h2>HOMEWORK 2 - due Friday, January 30</h2>
+
+<p>
+<b>WRITTEN PROBLEMS (8 pts)</b>
+</p><p>
+<i>Hand these problems in on paper in class on the due date specified.</i>
+</p><p>
+</p><ol>
+<li>(2 pts) 
+Assume you can only give someone a sequence of instructions from the 
+following set of two instructions:
+<p> 
+</p><ul>
+<li>
+Draw a square centered at ( x , y ) with a side length of s. <p>
+</p></li><li>
+Draw a circle centered at ( x , y ) with a radius of r. 
+</li></ul>
+<p>
+Give an algorithm made up of instructions of the type shown above to draw 
+the following pictures substituting in appropriate values for x, y, s and 
+r in each instruction. 
+</p><p>
+<img src="./15-105 Homework Assignment_files/hw2pic1.jpg">
+</p><p>
+
+</p></li><li>(2 pts)
+A precise algorithm is typically made up of instructions that consist of a 
+set of known primitive operations that do not need explanation. For 
+example, in arithmetic, the primitives <i>add</i>, <i>subtract</i>, 
+<i>multiply</i> and <i>divide</i> are easily understood. Each 
+of these operations can combine only two values at a time (e.g. "Add 2 
+and 3."). You may make reference to previous results in your instructions 
+(e.g. "Multiply the result from step 3 by 10."). Using only these 
+arithmetic primitive operations, write an algorithm that describes 
+how to perform the following computations: 
+<p>
+<img src="./15-105 Homework Assignment_files/hw2pic2.jpg">
+</p><p>
+The result of your last algorithmic step should be the final answer. 
+NOTE: In the second computation, can you figure out how to write only four 
+instructions to generate the answer? 
+</p><p>
+</p></li><li>(2 pts)
+Trace the following algorithm when c = 12 and when c = 35. Determine the 
+output in each case and show your work. What is the significance of the 
+answers?
+<p>
+</p><pre>1. Input c.
+2. Set d = 0.
+3. While c &#8800; 0, do the following:
+   a. If c modulo 5 = 0, add c to d.
+   b. Subtract 1 from c.
+4. Output d.
+</pre>
+<p>
+
+</p></li><li>(2 pts) Given a vector A with n integers in it, n &gt; 0,
+complete the algorithm below that computes and outputs the sum of the odd
+numbers stored in vector A.  You may assume the data for the vector has 
+already been input.  Remember that a vector with n values is indexed from 
+0 to n-1.
+<p>
+</p><pre>1. Set sum equal to __________.
+2. Set index equal to __________.
+3. While index ____ n, do the following:
+   a. If __________________________, add A[index] to sum.
+   b. Add 1 to index.
+4. Output sum.
+</pre>
+<p>
+</p></li></ol>
+
+<h3>COMPUTER PROBLEM (2 pts)</h3>
+<p>
+<i>Hand this in electronically using the 
+<a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/handin.html">Electronic Handin System</a> by 11:59PM on the due 
+date indicated.
+</i>
+</p><p> 
+Write a short Python program on your computer named <tt>computesum.py</tt> 
+that computes the sum of the positive integers 
+up to n, where n &gt; 0.  For example, if n is 5, then the program should 
+output 15 since 1 + 2 + 3 + 4 + 5 = 15. Use the python interpreter
+to test your work carefully for correctness.
+</p><p>
+Here is the general algorithm to follow:
+</p><p>
+</p><pre>1. Input n
+2. Set answer = 0.
+3. Set i = 0.
+4. While i &lt; n, do the following:
+   a. Add 1 to i.
+   b. Add i to answer.
+5. Output answer.
+</pre>
+<p>
+You may assume the input value will always be a positive integer.
+
+
+
+
+
+
+</p></body></html>

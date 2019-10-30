@@ -1,0 +1,206 @@
+
+<!-- saved from url=(0057)http://www.cs.cmu.edu/~tcortina/15-105sp09/homework8.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>
+15-105 Homework Assignment
+</title>
+</head>
+
+<body>
+
+<h1>15-105 SPRING 2009 [CORTINA]</h1>
+
+<h2>HOMEWORK 8 - due Friday, April 3</h2>
+
+<p>
+<b>WRITTEN PROBLEMS (8 pts)</b>
+</p><p>
+<i>Hand these problems in on paper in class on the due date specified.</i>
+</p><p>
+
+</p><ol>
+
+<li>(1 pt)
+Britney Spears' management team is scheduling a concert tour for her 
+comeback which will visit 15 cities including the first concert in
+her home town of
+Los Angeles.  She will perform one show in each city. She has a private 
+jet that will fly her directly from any city to any other city on her 
+tour. The cost of each flight depends on many factors including 
+availability of staff, landing fees at airports, etc. A computer can 
+compute the total travel cost for 1000 potential concert tour schedules 
+per second.
+<p>
+</p><ol type="a">
+<li>
+How long will it take to determine the sequence of cities in a
+concert tour schedule that has the lowest total flight cost? Show your 
+work.
+<p>
+</p></li><li>
+If Britney adds a 16th city to her tour, how many times longer will
+it take the computer to compute the lowest total flight cost? Explain your 
+answer.
+</li></ol>
+<p>
+
+</p></li><li>(1 pt)
+Consider the following formula in the propositional calculus: 
+<p>
+</p><blockquote>
+ ~(A &amp; B) &amp; (A &#8594; C) &amp; (C &#8594; B) 
+</blockquote>
+<p>
+</p><ol type="a">
+<li>
+Compute the truth value of this formula for every possible assignment 
+of the variables A, B, and C. Show your work. 
+<p>
+</p></li><li>
+Is this formula satisfiable? Why or why not? 
+</li></ol>
+<p>
+
+</p></li><li>(1.5 pts)
+A one-story house is shown below. The owner does not want any 
+multi-colored rooms. Put another way, the owner wants to paint each room 
+with a single color, but the colors of all rooms do not have to be the 
+same color (but they could be). Hallways are considered rooms, but closets 
+are not rooms and are not shown in the diagram.
+<p>
+</p><pre> _________________________________________________
+|               |    |         |         |        |
+| MASTER   |    |    |            DINING |        |
+| BEDROOM  |BATH|BATH| KITCHEN |  ROOM   |        |
+|          |    |    |         |                  |
+|________  |____|__  |_  __   _|__     __|        |
+|      |    HALLWAY      |               | HOME   |
+|       ________    _____                  OFFICE |
+|      |      |          |                        |
+| BED- | BED- |  FAMILY  |     LIVING    |        |
+| ROOM | ROOM |  ROOM          ROOM      |        |
+|      |      |                          |        |
+|______|_________________|_______________|________|
+</pre>
+<p>
+</p><ol type="a">
+<li>
+Using only 3 colors of paint (tan, white and yellow), how many different 
+ways can the owner paint the house? Explain your answer.
+<p>
+</p></li><li>
+Now, the owner adds another requirement that no two rooms that share a 
+doorway can be painted the same color. Can this be done for the owner's 
+house? Either show a valid color assignment for each room or explain why 
+no such assignment is possible.
+<p>
+</p></li><li>
+Why is this problem considered intractable in general?
+</li></ol>
+<p>
+
+</p></li><li>(1 pt)
+The floor tiling problem described in class in undecidable with the 
+condition that we cannot rotate the tile designs that we are given. 
+Explain why this problem becomes decidable (in fact, the answer is always 
+YES) if we allow rotations.
+<p>
+
+</p></li><li>(1.5 pt)
+<p>
+</p><ol type="a">
+<li>
+For each of the following word correspondence problems, either find a 
+correspondence (sequence that yields the same word from X and Y) or 
+explain clearly why no such correspondence exists.
+<p>
+</p><pre>(i)                                (ii)
+ -------------------------------   ------------------------------- 
+| Group |  1  |  2  |  3  |  4  | | Group |  1  |  2  |  3  |  4  | 
+ -------------------------------   ------------------------------- 
+|   X   | ab  | bb  | ab  | ba  | |   X   | abb | a   | b   | aaa | 
+|   Y   | ba  | ba  | aba | b   | |   Y   | a   | aa  | a   | bba | 
+ -------------------------------   ------------------------------- 
+</pre>
+<p>
+</p></li><li>
+The word correspondence problem as described in class is 
+undecidable in general.  Why?  
+</li></ol>
+<p>
+
+</p></li><li>(1 pt)
+The class P represents those problems that can be <i>solved</i> in 
+polynomial time. The class NP represents those problems with a solution 
+that can be <i>verified</i> in polynomial time.
+Consider the traveling salesperson problem where we want to find a 
+tour of the N cities that costs at most K. Explain why this problem is in 
+NP. 
+<p>
+</p></li><li>(1 pt)
+Using the definitions for P and NP given in the previous problem,
+if a problem is in P, is it in NP also? If a problem is in NP, is it in P 
+also?
+<p>
+
+</p></li></ol>
+
+<h3>COMPUTER PROBLEM (2 pts)</h3>
+<p>
+<i>Hand this in electronically using the 
+<a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/handin.html">Electronic Handin System</a> by 11:59PM on the due 
+date indicated.
+</i>
+</p><p> 
+Write a Python program that reads in 12 temperatures from a text file into 
+an array. Then create a window that is 300 pixels wide by 200 pixels high. 
+In this window, draw a bar graph that shows these temperatures from 
+January at the left to December at the right. The bottom of the window 
+represents 0<sup>o</sup> and the top of the window represents 
+100<sup>o</sup>. Each bar should be 25 pixels wide. The height of each bar 
+depends on the temperature for each month. The colors of the bars should 
+alternate between green, yellow and cyan. 
+</p><p>
+Once the bargraph is displayed, your program should wait for the user to 
+click the mouse on or above one of the bars. Depending on the location 
+clicked, display the corresponding
+month and temperature in the console window. 
+Allow the user to click 5 times.
+</p><p>
+Programming Hints:
+</p><p>
+</p><ul>
+<li>
+Create another array with the names of the months so you can easily print 
+out the correct one without using 12 <tt>if</tt> statements. Remember to 
+put the names of the months in quotation marks, e.g. <tt>"Jan"</tt>, since
+these are strings, not numerical values.
+<p>
+</p></li><li>
+Use the <tt>win.getMouse()</tt> function to get the 
+point where the user clicks. Then use the <tt>getX</tt> 
+function to get the x position of the user's click.
+The index of the month picked is x/25 since each bar is 25 pixels wide.
+The user does not have to click on the bar itself; the user can click 
+anywhere in the vertical region in or above that bar. 
+</li></ul>
+<p>
+SAMPLE DATA FILE: Right click <a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/pghtemps.txt">HERE</a>
+to save the data file that contains the Pittsburgh temperatures.
+You may assume the data files that we use to grade your program 
+will have 12 integers in the range 1 to 100 inclusive, one per line,
+as in the example data file.
+Your final program should work for any temperature data (between 1 
+and 100), not just Pittsburgh's temperatures.
+</p><p>
+<img src="./hw8_files/hw8bargraph.jpg">
+<br>
+<i>Example graph created for the Pittsburgh temperatures given in homework 
+7.</i>
+
+
+
+
+
+
+</p></body></html>

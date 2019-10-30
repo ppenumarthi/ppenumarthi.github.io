@@ -1,0 +1,142 @@
+
+<!-- saved from url=(0057)http://www.cs.cmu.edu/~tcortina/15-105sp09/homework3.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>
+15-105 Homework Assignment
+</title>
+</head>
+
+<body>
+
+<h1>15-105 SPRING 2009 [CORTINA]</h1>
+
+<h2>HOMEWORK 3 - due Friday, February 6</h2>
+
+<p>
+<b>WRITTEN PROBLEMS (8 pts)</b>
+</p><p>
+<i>Hand these problems in on paper in class on the due date specified.</i>
+</p><p>
+</p><ol>
+<li>(1 pt) Trace each of the following flowcharts using the initial values 
+a = 42 and b = 18. What useful computation are both of these flowcharts 
+performing?
+<p>
+<img src="./hw3_files/hw3-1.jpg">
+</p><p>
+</p></li><li>
+(2 pts) Draw a complete flowchart for the algorithm below. 
+Trace the algorithm for n = 48. How many <i>iterations</i> of the loop are 
+computed?
+<p>
+</p><pre>1. Input a positive integer n.
+2. While n &#8800; 1, do the following:
+   a. If n is even, divide n by 2.
+      Otherwise, multiply n by 3 and then add 1.
+   b. Output n
+</pre>
+<p>
+</p></li><li>(2 pts)
+Write out the algorithm represented by the flowchart below as a 
+Python program.
+What is the output of the algorithm if n = 1000?  Describe what this 
+algorithm is computing in general for any positive integer value for n.
+<p>
+<img src="./hw3_files/hw3-3.jpg">
+</p><p>
+</p></li><li>(1 pt) Suppose we want to store a sequence of 5 data values in a computer. 
+The data values are represented as A, B, C, D, E, in the order given.
+<p>
+</p><ol type="a">
+<li>
+If we use a vector to store the sequence such that the first data value of 
+the sequence is always stored in position 0 of the vector (see below), 
+which operation takes more time: removing the value A or adding a new value F 
+after E? Why?
+<p>
+</p><pre>    0   1   2   3   4   5   6   7
+   -------------------------------
+  | A | B | C | D | E |   |   |   |  
+   -------------------------------   
+</pre>
+<p>
+</p></li><li>
+If we use a singly linked list to store the sequence such that the first data 
+value of the sequence is always stored at the head of the list (see below),
+which operation takes more time: removing the value A or adding a new value F 
+after E? Why?
+<p>
+</p><pre>   -------     -------     -------     -------     --------
+  | A |   |--&gt;| B |   |--&gt;| C |   |--&gt;| D |   |--&gt;| E |null|   
+   -------     -------     -------     -------     --------
+    head
+</pre>
+</li></ol>
+<p>
+
+</p></li><li>(2 pts) Stacks and queues are two ways to store data in a linear fashion.
+<p>
+</p><ol type="a">
+<li>Describe the major difference between a stack and a queue.
+<p>
+</p></li><li>The picture below is of a soda can dispenser. Is it a stack or a queue? 
+Explain.
+<p>
+<img src="./hw3_files/canholder.gif">
+</p><p>
+</p></li><li>Using the stack algorithm for computing RPN expressions, trace the 
+algorithm on the RPN expression below, showing the 
+stack at the end of each iteration of the loop. 
+(Draw a separate picture of the stack 
+each time, so we can see the overall process of the algorithm.)
+<p>
+<tt>9  4  8  5  +  *  1  -  3  /  +  $</tt>  
+</p><p>
+</p></li><li>Using the queue algorithm for the Josephus problem, trace the algorithm 
+for n = 10, m = 6. Who is the last man standing?
+<p>
+</p></li></ol>
+
+</li></ol>
+
+<h3>COMPUTER PROBLEM (2 pts)</h3>
+<p>
+<i>Hand this in electronically using the 
+<a href="http://www.cs.cmu.edu/~tcortina/15-105sp09/handin.html">Electronic Handin System</a> by 11:59PM on the due 
+date indicated.
+</i>
+</p><p> 
+Write a short Python program on your computer named <tt>triangle.py</tt> 
+to implement the algorithm below:
+</p><p>
+</p><pre>1. Set i equal to 11.
+2. Set j equal to 1.
+3. While j &#8804; 10, do the following:
+   a. Do the following j times:
+      i. Output i but keep the cursor on the same line.
+      ii. Add 1 to i.
+   b. Move the cursor to the next line.
+   c. Add 1 to j.
+</pre>
+<p>
+If you complete your program correctly, you should see the 
+following output:
+</p><p>
+</p><pre>11
+12 13
+14 15 16
+17 18 19 20
+21 22 23 24 25
+26 27 28 29 30 31
+32 33 34 35 36 37 38
+39 40 41 42 43 44 45 46
+47 48 49 50 51 52 53 54 55
+56 57 58 59 60 61 62 63 64 65
+</pre>
+
+
+
+
+
+
+</body></html>
